@@ -50,6 +50,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Settings.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -64,6 +65,7 @@
     <Resource Include="Images\ButtonPlay.gif" />
     <Resource Include="Images\PlayingBG.jpg" />
     <Resource Include="Images\FieldBG.png" />
+    <Resource Include="Images\Favicon.png" />
     <Content Include="Sounds\background.mp3" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

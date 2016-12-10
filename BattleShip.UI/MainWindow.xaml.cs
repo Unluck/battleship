@@ -1,4 +1,5 @@
 ﻿using BattleShip.Data;
+using BattleShip.UI.Properties;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,14 +25,15 @@ namespace BattleShip.UI
         public MainWindow()
         {
             InitializeComponent();
+            textBoxUserName.Text = Settings.GetInstance().UserName;
             //MusicSettings.BackgroundMusic();
         }
 
         private void buttonPlay_Click(object sender, RoutedEventArgs e)
         {
-            var UserName = textBoxUserName.Text;
-            ModeSelection ModeSelection = new ModeSelection();
-            ModeSelection.ShowDialog();            
+            ModeSelectionWindow ModeSelectionWindow = new ModeSelectionWindow();
+            ModeSelectionWindow.ShowDialog();
+            Settings.GetInstance().UserName = textBoxUserName.Text;
         }
     }
 }

@@ -15,20 +15,19 @@ using System.Windows.Shapes;
 namespace BattleShip.UI
 {
     /// <summary>
-    /// Логика взаимодействия для ModeSelection.xaml
+    /// Логика взаимодействия для ModeSelectionWindow.xaml
     /// </summary>
-    public partial class ModeSelection : Window
+    public partial class ModeSelectionWindow : Window
     {
-        public ModeSelection()
+        public ModeSelectionWindow()
         {
             InitializeComponent();
         }
 
-        private void button1Player_Click(object sender, RoutedEventArgs e)
+        private void buttonOnePlayer_Click(object sender, RoutedEventArgs e)
         {
-            OnePlayer OnePlayer = new OnePlayer();
-            OnePlayer.ShowDialog();
-            
+            OnePlayerWindow OnePlayerWindow = new OnePlayerWindow();
+            OnePlayerWindow.ShowDialog();
         }
 
         private void buttonBack_Click(object sender, RoutedEventArgs e)

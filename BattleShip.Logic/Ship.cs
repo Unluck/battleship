@@ -8,18 +8,18 @@ namespace BattleShip.Logic
 {
     public class Ship
     {
-        public int ID { get; set; }
-        public bool status { get; set; }
-        public int lifes { get; set; }
-        public int hits { get; set; }
-        public Location[] shipLoc { get; set;}
+        public int Id { get; set; }
+        public bool Status { get; set; }
+        public int Lifes { get; set; }
+        public int Hits { get; set; }
+        public Location[] ShipLoc { get; set;}
 
-        public Ship(int ID, int lifes, int hits, Location[] shipLoc)
+        public Ship(int id, int lifes, int hits, Location[] shipLoc)
         {
-            this.ID = ID;
-            this.lifes = lifes;
-            this.hits = hits;
-            this.shipLoc = shipLoc;
+            Id = id;
+            Lifes = lifes;
+            Hits = hits;
+            ShipLoc = shipLoc;
         }
 
     }

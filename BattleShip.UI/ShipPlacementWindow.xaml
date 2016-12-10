@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BattleShip.UI"
         mc:Ignorable="d"
-        Title="Battleship" Height="540" Width="960" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Battleship" Height="540" Width="960" ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
+        Icon="/BattleShip.Data;component/Images/Favicon.png">
     <Grid>
         <Canvas x:Name="canvasField" HorizontalAlignment="Left" Height="300" Margin="263,140,0,0" VerticalAlignment="Top" Width="300" MouseLeftButtonDown="canvasField_MouseLeftButtonDown">
             <Canvas.Background>
