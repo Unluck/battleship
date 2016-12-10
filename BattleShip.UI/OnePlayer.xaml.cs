@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BattleShip.Logic;
 
 namespace BattleShip.UI
 {
@@ -19,9 +20,11 @@ namespace BattleShip.UI
     /// </summary>
     public partial class OnePlayer : Window
     {
+        Field kek = new Field();
         public OnePlayer()
         {
             InitializeComponent();
+            
         }
     }
 }

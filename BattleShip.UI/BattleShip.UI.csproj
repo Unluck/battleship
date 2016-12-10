@@ -114,6 +114,10 @@
       <Project>{cfde3c68-a6ff-415f-a941-f7bd44c1fcfc}</Project>
       <Name>BattleShip.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BattleShip.Logic\BattleShip.Logic.csproj">
+      <Project>{73c87c35-1120-47ed-b40f-51af71110367}</Project>
+      <Name>BattleShip.Logic</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
