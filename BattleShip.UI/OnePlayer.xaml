@@ -10,59 +10,16 @@
         <Grid.Background>
             <ImageBrush ImageSource="/BattleShip.Data;component/Images/PlayingBG.jpg"/>
         </Grid.Background>
-        <Grid HorizontalAlignment="Left" Height="207" Margin="153,135,0,0" VerticalAlignment="Top" Width="202" ShowGridLines="True">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-            </Grid.RowDefinitions>
-            
-        </Grid>
-        <Grid HorizontalAlignment="Left" Height="207" Margin="561,135,0,0" VerticalAlignment="Top" Width="202" ShowGridLines="True">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-        </Grid>
+        <Canvas x:Name="ownField" HorizontalAlignment="Left" Height="300" Margin="107,94,0,0" VerticalAlignment="Top" Width="300">
+            <Canvas.Background>
+                <ImageBrush ImageSource="/BattleShip.Data;component/Images/FieldBG.png"/>
+            </Canvas.Background>
+        </Canvas>
+        <Canvas x:Name="enemyField" HorizontalAlignment="Left" Height="300" Margin="546,94,0,0" VerticalAlignment="Top" Width="300">
+            <Canvas.Background>
+                <ImageBrush ImageSource="/BattleShip.Data;component/Images/FieldBG.png"/>
+            </Canvas.Background>
+        </Canvas>
 
     </Grid>
 

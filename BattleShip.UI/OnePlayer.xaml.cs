@@ -20,11 +20,11 @@ namespace BattleShip.UI
     /// </summary>
     public partial class OnePlayer : Window
     {
-        Field kek = new Field();
         public OnePlayer()
         {
             InitializeComponent();
             
         }
+
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BattleShip.Logic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,15 +20,32 @@ namespace BattleShip.UI
     /// </summary>
     public partial class ShipPlacementWindow : Window
     {
+        List<Location> click = new List<Location>();
+        Events ev = new Events();
+
         public ShipPlacementWindow()
         {
-            
+            InitializeComponent();
         }
 
         private void canvasField_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Point position = e.GetPosition(canvasField);
-            Point p = new Point((int)(position.X / (canvasField.ActualWidth / 10)), (int)(position.Y / (canvasField.ActualHeight / 10)));
+            Location p = new Location((int)(position.X / (canvasField.ActualWidth / 10)), (int)(position.Y / (canvasField.ActualHeight / 10)));
+            click.Add(p);
+            
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            var location = new Location[click.Count];
+            for (int i = 0; i < click.Count; i++)
+            {
+                location[i] = click[i];
+            }
+             ev.ship.Add(new Ship(click.Count, 0, location));
+            click.Clear();
+            
         }
     }
 }

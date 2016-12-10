@@ -7,11 +7,13 @@
         mc:Ignorable="d"
         Title="Battleship" Height="540" Width="960" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Canvas x:Name="canvasField" HorizontalAlignment="Left" Height="300" Margin="263,140,0,0" VerticalAlignment="Top" Width="300" MouseLeftButtonDown="canvasField_MouseLeftButtonDown">
+        <Canvas x:Name="canvasField" HorizontalAlignment="Left" Height="300" Margin="312,73,0,0" VerticalAlignment="Top" Width="300" MouseLeftButtonDown="canvasField_MouseLeftButtonDown">
             <Canvas.Background>
                 <ImageBrush ImageSource="/BattleShip.Data;component/Images/FieldBG.png"/>
             </Canvas.Background>
         </Canvas>
+        <Button x:Name="placeButton" Content="Add ship" HorizontalAlignment="Left" Margin="218,438,0,0" VerticalAlignment="Top" Width="132" Height="47" Click="button_Click"/>
+        <Button x:Name="startButton" Content="Start game" HorizontalAlignment="Left" Margin="549,438,0,0" VerticalAlignment="Top" Width="132" Height="47" RenderTransformOrigin="0.062,0.276"/>
 
     </Grid>
 </Window>
