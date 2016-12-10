@@ -31,7 +31,7 @@ namespace BattleShip.UI
         {
             var UserName = textBoxUserName.Text;
             ModeSelection ModeSelection = new ModeSelection();
-            ModeSelection.ShowDialog();
+            ModeSelection.ShowDialog();            
         }
     }
 }
