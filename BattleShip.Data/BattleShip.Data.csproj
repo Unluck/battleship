@@ -63,6 +63,7 @@
     <Resource Include="Images\MainMenuBG.jpg" />
     <Resource Include="Images\ButtonPlay.gif" />
     <Resource Include="Images\PlayingBG.jpg" />
+    <Resource Include="Images\FieldBG.png" />
     <Content Include="Sounds\background.mp3" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
