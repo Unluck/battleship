@@ -1,0 +1,27 @@
+﻿<Window x:Class="BattleShip.UI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BattleShip.UI"
+        mc:Ignorable="d"
+        Title="Battleship" Height="540" Width="960" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/BattleShip.Data;component/Images/MainMenuBG.jpg"/>
+        </Grid.Background>
+        <Button x:Name="buttonPlay" Content="" HorizontalAlignment="Left" Margin="388,193,0,0" VerticalAlignment="Top" Width="218" Height="106" BorderBrush="{x:Null}" Click="buttonPlay_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="/BattleShip.Data;component/Images/ButtonPlay.gif" Stretch="UniformToFill"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="buttonLeaderboard" Content="Leaderboard" HorizontalAlignment="Left" Margin="450,304,0,0" VerticalAlignment="Top" Width="104" Height="128"/>
+        <CheckBox x:Name="checkBoxMusic" Content="Background Music" HorizontalAlignment="Left" Margin="820,30,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <CheckBox x:Name="checkBoxSound" Content="Gameplay Sounds" HorizontalAlignment="Left" Margin="820,10,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label x:Name="labelUserName" Content="Enter Your Name:" HorizontalAlignment="Left" Margin="4,6,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <TextBox x:Name="textBoxUserName" HorizontalAlignment="Left" Height="22" Margin="113,10,0,0" TextWrapping="Wrap" Text="Player" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="labelCredits" Content="Credits: Yuriy Kirillov, Semen Mitrofanov" HorizontalAlignment="Left" Margin="10,476,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+
+    </Grid>
+
+</Window>

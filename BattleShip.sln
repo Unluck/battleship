@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleShip.UI", "BattleShip.UI\BattleShip.UI.csproj", "{89DD6149-990F-42AB-9CF9-06038865A1F8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleShip.Data", "BattleShip.Data\BattleShip.Data.csproj", "{CFDE3C68-A6FF-415F-A941-F7BD44C1FCFC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleShip.Logic", "BattleShip.Logic\BattleShip.Logic.csproj", "{73C87C35-1120-47ED-B40F-51AF71110367}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{89DD6149-990F-42AB-9CF9-06038865A1F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89DD6149-990F-42AB-9CF9-06038865A1F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89DD6149-990F-42AB-9CF9-06038865A1F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89DD6149-990F-42AB-9CF9-06038865A1F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFDE3C68-A6FF-415F-A941-F7BD44C1FCFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFDE3C68-A6FF-415F-A941-F7BD44C1FCFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFDE3C68-A6FF-415F-A941-F7BD44C1FCFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFDE3C68-A6FF-415F-A941-F7BD44C1FCFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73C87C35-1120-47ED-B40F-51AF71110367}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73C87C35-1120-47ED-B40F-51AF71110367}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73C87C35-1120-47ED-B40F-51AF71110367}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73C87C35-1120-47ED-B40F-51AF71110367}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
