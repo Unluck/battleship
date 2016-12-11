@@ -13,5 +13,15 @@
         </Grid.Background>
         <CheckBox x:Name="checkBoxMusic" Content="Background Music" HorizontalAlignment="Left" Margin="820,30,0,0" VerticalAlignment="Top" FontWeight="Bold" Click="checkBoxMusic_Click"/>
         <CheckBox x:Name="checkBoxSound" Content="Gameplay Sounds" HorizontalAlignment="Left" Margin="820,10,0,0" VerticalAlignment="Top" FontWeight="Bold" Click="checkBoxSound_Click"/>
+        <Canvas x:Name="ownField" HorizontalAlignment="Left" Height="300" Margin="118,94,0,0" VerticalAlignment="Top" Width="300">
+            <Canvas.Background>
+                <ImageBrush ImageSource="/BattleShip.Data;component/Images/FieldBG.png"/>
+            </Canvas.Background>
+        </Canvas>
+        <Canvas x:Name="enemyField" HorizontalAlignment="Left" Height="300" Margin="596,94,0,0" VerticalAlignment="Top" Width="300">
+            <Canvas.Background>
+                <ImageBrush ImageSource="/BattleShip.Data;component/Images/FieldBG.png"/>
+            </Canvas.Background>
+        </Canvas>
     </Grid>
 </Window>

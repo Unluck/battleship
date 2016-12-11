@@ -8,7 +8,7 @@ namespace BattleShip.Logic
 {
     public class Events
     {
-        public List<Ship> ownShip = new List<Ship>();
+        //public List<Ship> ownShip = new List<Ship>();
         ComputerLogic cl = new ComputerLogic();
         public enum shotStatus
         {
@@ -32,6 +32,7 @@ namespace BattleShip.Logic
                 }
             } return shotStatus.miss;
         }
- 
+
+        
     }
 }

@@ -22,7 +22,8 @@ namespace BattleShip.UI
     public partial class ShipPlacementWindow : Window
     {
         List<Location> click = new List<Location>();
-        Events ev = new Events();
+        //public Events ev = new Events();
+        public List<Ship> ownShip = new List<Ship>();
 
         public ShipPlacementWindow()
         {
@@ -40,11 +41,11 @@ namespace BattleShip.UI
             SolidColorBrush scb = new SolidColorBrush();
             scb.Color = Color.FromRgb(100,120,100);
             rc.Fill = scb;
-            rc.Width = 40;
-            rc.Height = 40;
+            rc.Width = 30;
+            rc.Height = 30;
             Thickness margin = rc.Margin;
-            margin.Top = p.y*40;
-            margin.Left = p.x*40;
+            margin.Top = p.y*30;
+            margin.Left = p.x*30;
             rc.Margin = margin;
             canvasField.Children.Add(rc);
             click.Add(p);
@@ -58,7 +59,7 @@ namespace BattleShip.UI
             {
                 location[i] = click[i];
             }
-            ev.ownShip.Add(new Ship(click.Count, 0, location));
+            ownShip.Add(new Ship(click.Count, 0, location));
             click.Clear();
             
         }

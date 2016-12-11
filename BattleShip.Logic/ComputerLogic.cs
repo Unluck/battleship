@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BattleShip.Logic
 {
-    class ComputerLogic
+    public class ComputerLogic
     {
         public List<Ship> enemyShip = new List<Ship>();
 
