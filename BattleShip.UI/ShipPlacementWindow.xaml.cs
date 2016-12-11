@@ -43,7 +43,7 @@ namespace BattleShip.UI
             {
                 location[i] = click[i];
             }
-             ev.ship.Add(new Ship(click.Count, 0, location));
+             ev.ownShip.Add(new Ship(click.Count, 0, location));
             click.Clear();
             
         }

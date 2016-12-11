@@ -8,7 +8,7 @@ namespace BattleShip.Logic
 {
     public class Location
     {
-        int x, y;
+        public int x, y;
         public Location(int x,int y)
         {
             this.x = x;

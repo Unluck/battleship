@@ -8,18 +8,18 @@ namespace BattleShip.Logic
 {
     public class Events
     {
-        public List<Ship> ship = new List<Ship>();
+        public List<Ship> ownShip = new List<Ship>();
+        ComputerLogic cl = new ComputerLogic();
         public enum shotStatus
         {
             miss,
             hit,
-            kill,
-            nth
+            kill
         }
         
         public shotStatus Shot(Location loc)
         {
-            foreach (var s1 in ship)
+            foreach (var s1 in cl.enemyShip)
             {
                 foreach (var s2 in s1.ShipLoc)
                 {
@@ -29,10 +29,8 @@ namespace BattleShip.Logic
                         if (s1.Hits == s1.Lifes) return shotStatus.kill;
                         else return shotStatus.hit;
                     }
-
-                    else return shotStatus.miss;
                 }
-            } return shotStatus.nth;
+            } return shotStatus.miss;
         }
  
     }
