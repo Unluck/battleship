@@ -32,6 +32,17 @@ namespace BattleShip.UI
         {
             Point position = e.GetPosition(canvasField);
             Location p = new Location((int)(position.X / (canvasField.ActualWidth / 10)), (int)(position.Y / (canvasField.ActualHeight / 10)));
+            Rectangle rc = new Rectangle();
+            SolidColorBrush scb = new SolidColorBrush();
+            scb.Color = Color.FromRgb(100,120,100);
+            rc.Fill = scb;
+            rc.Width = 40;
+            rc.Height = 40;
+            Thickness margin = rc.Margin;
+            margin.Top = p.y*40;
+            margin.Left = p.x*40;
+            rc.Margin = margin;
+            canvasField.Children.Add(rc);
             click.Add(p);
             
         }

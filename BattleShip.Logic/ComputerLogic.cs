@@ -26,7 +26,7 @@ namespace BattleShip.Logic
                             ));
                     }
                 }
-                if (i == 2)
+                if (i==2)
                 {
                     for (int j = 0; j < 3; j++)
                     {
@@ -55,7 +55,7 @@ namespace BattleShip.Logic
                         }
                     }
                 }
-                if (i == 3) 
+                if (i==3) 
                 {
                     for (int j = 0; j < 2; j++)
                     {
