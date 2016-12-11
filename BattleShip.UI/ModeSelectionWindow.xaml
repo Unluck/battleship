@@ -11,13 +11,10 @@
         <Grid.Background>
             <ImageBrush ImageSource="/BattleShip.Data;component/Images/MainMenuBG.jpg"/>
         </Grid.Background>
-        <CheckBox x:Name="checkBoxMusic" Content="Background Music" HorizontalAlignment="Left" Margin="820,30,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <CheckBox x:Name="checkBoxSound" Content="Gameplay Sounds" HorizontalAlignment="Left" Margin="820,10,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <Label x:Name="labelCredits" Content="Credits: Yuriy Kirillov, Semen Mitrofanov" HorizontalAlignment="Left" Margin="10,476,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <CheckBox x:Name="checkBoxMusic" Content="Background Music" HorizontalAlignment="Left" Margin="820,30,0,0" VerticalAlignment="Top" FontWeight="Bold" Click="checkBoxMusic_Click"/>
+        <CheckBox x:Name="checkBoxSound" Content="Gameplay Sounds" HorizontalAlignment="Left" Margin="820,10,0,0" VerticalAlignment="Top" FontWeight="Bold" Click="checkBoxSound_Click"/>
         <Button x:Name="buttonOnePlayer" Content="1 Player" HorizontalAlignment="Left" Margin="427,109,0,0" VerticalAlignment="Top" Width="167" Height="89" Click="buttonOnePlayer_Click"/>
         <Button x:Name="buttonTwoPlayers" Content="2 Players" HorizontalAlignment="Left" Margin="427,253,0,0" VerticalAlignment="Top" Width="200" Height="81"/>
-        <Button x:Name="buttonBack" Content="Back" HorizontalAlignment="Left" Margin="10,56,0,0" VerticalAlignment="Top" Width="96" Height="38" Click="buttonBack_Click"/>
-        <Label x:Name="labelUserName" Content="Enter Your Name:" HorizontalAlignment="Left" Margin="4,6,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <TextBox x:Name="textBoxUserName" HorizontalAlignment="Left" Height="22" Margin="113,10,0,0" TextWrapping="Wrap" Text="Player" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="buttonBack" Content="Back" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="96" Height="38" Click="buttonBack_Click"/>
     </Grid>
 </Window>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BattleShip.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,18 @@ namespace BattleShip.UI
         public OnePlayerWindow()
         {
             InitializeComponent();
+            checkBoxMusic.IsChecked = GameSettings.GetInstance().BackgroundMusic;
+            checkBoxSound.IsChecked = GameSettings.GetInstance().GameplaySounds;
+        }
+
+        private void checkBoxSound_Click(object sender, RoutedEventArgs e)
+        {
+            GameSettings.GetInstance().GameplaySounds = checkBoxSound.IsChecked.Value;
+        }
+
+        private void checkBoxMusic_Click(object sender, RoutedEventArgs e)
+        {
+            GameSettings.GetInstance().BackgroundMusic = checkBoxMusic.IsChecked.Value;
         }
     }
 }
