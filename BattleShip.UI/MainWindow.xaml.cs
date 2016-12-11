@@ -25,7 +25,8 @@ namespace BattleShip.UI
         public MainWindow()
         {
             InitializeComponent();
-            textBoxUserName.Text = Settings.GetInstance().UserName;
+            checkBoxMusic.IsChecked = GameSettings.GetInstance().BackgroundMusic;
+            checkBoxSound.IsChecked = GameSettings.GetInstance().GameplaySounds;
             //MusicSettings.BackgroundMusic();
         }
 
@@ -33,7 +34,11 @@ namespace BattleShip.UI
         {
             ModeSelectionWindow ModeSelectionWindow = new ModeSelectionWindow();
             ModeSelectionWindow.ShowDialog();
-            Settings.GetInstance().UserName = textBoxUserName.Text;
+        }
+
+        private void checkBoxSound_Click(object sender, RoutedEventArgs e)
+        {
+            GameSettings.GetInstance().GameplaySounds = checkBoxSound.IsChecked.Value;
         }
     }
 }
