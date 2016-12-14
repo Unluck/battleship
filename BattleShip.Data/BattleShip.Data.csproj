@@ -66,6 +66,15 @@
     <Resource Include="Images\PlayingBG.jpg" />
     <Resource Include="Images\FieldBG.png" />
     <Resource Include="Images\GameIcon.png" />
+    <Resource Include="Images\PlayButton.jpg" />
+    <Resource Include="Images\Buttons\BackButton.png" />
+    <Resource Include="Images\Buttons\ClearFieldButton.png" />
+    <Resource Include="Images\Buttons\StartGameButton.png" />
+    <Resource Include="Images\Buttons\AddShipButton.png" />
+    <Resource Include="Images\Buttons\LeaderboardButton.png" />
+    <Resource Include="Images\Buttons\OnePlayerButton.png" />
+    <Resource Include="Images\Buttons\PlayButton.png" />
+    <Resource Include="Images\Buttons\TwoPlayersButton.png" />
     <Content Include="Sounds\background.mp3" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

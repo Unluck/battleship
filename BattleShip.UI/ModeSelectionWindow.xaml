@@ -13,8 +13,20 @@
         </Grid.Background>
         <CheckBox x:Name="checkBoxMusic" Content="Background Music" HorizontalAlignment="Left" Margin="820,30,0,0" VerticalAlignment="Top" FontWeight="Bold" Click="checkBoxMusic_Click"/>
         <CheckBox x:Name="checkBoxSound" Content="Gameplay Sounds" HorizontalAlignment="Left" Margin="820,10,0,0" VerticalAlignment="Top" FontWeight="Bold" Click="checkBoxSound_Click"/>
-        <Button x:Name="buttonOnePlayer" Content="1 Player" HorizontalAlignment="Left" Margin="427,109,0,0" VerticalAlignment="Top" Width="167" Height="89" Click="buttonOnePlayer_Click"/>
-        <Button x:Name="buttonTwoPlayers" Content="2 Players" HorizontalAlignment="Left" Margin="427,253,0,0" VerticalAlignment="Top" Width="200" Height="81"/>
-        <Button x:Name="buttonBack" Content="Back" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="96" Height="38" Click="buttonBack_Click"/>
+        <Button x:Name="buttonOnePlayer" Content="" HorizontalAlignment="Left" Margin="330,125,0,0" VerticalAlignment="Top" Width="300" Height="100" Click="buttonOnePlayer_Click" BorderBrush="{x:Null}" Template="{DynamicResource ButtonControlTemplate1}">
+            <Button.Background>
+                <ImageBrush ImageSource="/BattleShip.Data;component/Images/Buttons/OnePlayerButton.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="buttonTwoPlayers" Content="" HorizontalAlignment="Left" Margin="330,300,0,0" VerticalAlignment="Top" Width="300" Height="100" BorderBrush="{x:Null}" Template="{DynamicResource ButtonControlTemplate1}">
+            <Button.Background>
+                <ImageBrush ImageSource="/BattleShip.Data;component/Images/Buttons/TwoPlayersButton.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="buttonBack" Content="" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="99" Height="33" Click="buttonBack_Click" BorderBrush="{x:Null}" Template="{DynamicResource ButtonControlTemplate1}">
+            <Button.Background>
+                <ImageBrush ImageSource="/BattleShip.Data;component/Images/Buttons/BackButton.png"/>
+            </Button.Background>
+        </Button>
     </Grid>
 </Window>
