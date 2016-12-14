@@ -26,7 +26,7 @@ namespace BattleShip.UI
             checkBoxMusic.IsChecked = GameSettings.GetInstance().BackgroundMusic;
             checkBoxSound.IsChecked = GameSettings.GetInstance().GameplaySounds;
             textBoxUserName.Text = GameSettings.GetInstance().UserName;
-            labelHelp.Content = "Help: Place one ship of any type\nby clicking on cells.";
+            labelHint.Content = "Hint: Place one ship of any type\nby clicking on cells.";
             labelShips.Content = string.Format("4 cells: {0}\n3 cells: {1}\n2 cells: {2}\n1 cell: {3}", cells[3], cells[2], cells[1], cells[0]);
         }
 
@@ -44,20 +44,20 @@ namespace BattleShip.UI
                     foreach (var location in ship.ShipLoc)                 
                         if (location.x == x && location.y == y)
                         {
-                            labelHelp.Content = "Help: Cell already exists.";
+                            labelHint.Content = "Hint: Cell already exists.";
                             return;
                         }
 
             foreach (var click in click)
                 if(click.x == x && click.y == y)
                 {
-                    labelHelp.Content = "Help: Cell already exists.";
+                    labelHint.Content = "Hint: Cell already exists.";
                     return;
                 }
 
             if (field[x + 1, y + 1] == 4)
             {
-                labelHelp.Content = "Help: You cannot place ship near\nexisting one.";
+                labelHint.Content = "Hint: You cannot place ship near\nexisting one.";
                 return;
             }
 
@@ -67,13 +67,13 @@ namespace BattleShip.UI
                 {
                     if (field[click[1].x, click[1].y] == 1 && click[1].y != y)
                     {
-                        labelHelp.Content = "Help: Cells of one ship must be\nnear each other as single line.\nUse \"Add ship\" to place current\nship firstly.";
+                        labelHint.Content = "Hint: Cells of one ship must be\nnear each other as single line.\nUse \"Add ship\" to place current\nship firstly.";
                         return;
                     }
 
                     if (field[click[1].x, click[1].y] == 2 && click[1].x != x)
                     {
-                        labelHelp.Content = "Help: Cells of one ship must be\nnear each other as single line.\nUse \"Add ship\" to place current\nship firstly.";
+                        labelHint.Content = "Hint: Cells of one ship must be\nnear each other as single line.\nUse \"Add ship\" to place current\nship firstly.";
                         return;
                     }
                 }
@@ -81,13 +81,13 @@ namespace BattleShip.UI
 
             if (click.Count != 0 && field[x + 1, y + 1] != 1 && field[x + 1, y + 1] != 2)
             {
-                labelHelp.Content = "Help: Cells of one ship must be\nnear each other as single line.\nUse \"Add ship\" to place current\nship firstly.";
+                labelHint.Content = "Hint: Cells of one ship must be\nnear each other as single line.\nUse \"Add ship\" to place current\nship firstly.";
                 return;
             }
 
             if (click.Count == 4)
             {
-                labelHelp.Content = "Help: Maximum size of a ship is 4 cells.\nUse \"Add ship\" to place current ship firstly.";
+                labelHint.Content = "Hint: Maximum size of a ship is 4 cells.\nUse \"Add ship\" to place current ship firstly.";
                 return;
             }
 
@@ -103,7 +103,7 @@ namespace BattleShip.UI
             fieldPlacement(x, y);
             click.Add(p);
             allClicks.Add(p);
-            labelHelp.Content = "Help: Cell added.";
+            labelHint.Content = "Hint: Cell added.";
         }
 
         private void buttonPlace_Click(object sender, RoutedEventArgs e)
@@ -112,14 +112,14 @@ namespace BattleShip.UI
 
             if (click.Count == 0)
             {
-                labelHelp.Content = "Help: Place ship firstly.";
+                labelHint.Content = "Hint: Place ship firstly.";
                 return;
             }            
 
             if (cells[click.Count - 1] == 0)
             {
                 int count = allClicks.Count;
-                labelHelp.Content = "Help: You do not have any\nships of this type left.";
+                labelHint.Content = "Hint: You do not have any\nships of this type left.";
                 for (int i = count; i > count - click.Count; i--)
                 {
                     canvasField.Children.RemoveAt(i - 1);
@@ -143,7 +143,7 @@ namespace BattleShip.UI
             cells[click.Count - 1] -= 1;
 
             click.Clear();
-            labelHelp.Content = "Help: Ship added.";
+            labelHint.Content = "Hint: Ship added.";
             labelShips.Content = string.Format("4 cells: {0}\n3 cells: {1}\n2 cells: {2}\n1 cell: {3}", cells[3], cells[2], cells[1], cells[0]);
         }
 
@@ -152,7 +152,7 @@ namespace BattleShip.UI
             for (int i = 0; i < 4; i++)
                 if (cells[i] != 0)
                 {
-                    labelHelp.Content = "Help: Place all ships firstly.";
+                    labelHint.Content = "Hint: Place all ships firstly.";
                     return;
                 }
 

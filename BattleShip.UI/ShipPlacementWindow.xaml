@@ -22,7 +22,7 @@
         <Button x:Name="buttonStart" Content="Start game" HorizontalAlignment="Left" Margin="564,438,0,0" VerticalAlignment="Top" Width="132" Height="47" RenderTransformOrigin="0.062,0.276" Click="buttonStart_Click"/>
         <Label x:Name="labelUserName" Content="Enter Your Name:" HorizontalAlignment="Left" Margin="361,25,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
         <TextBox x:Name="textBoxUserName" HorizontalAlignment="Left" Height="22" Margin="491,31,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.308,0.205"/>
-        <Label x:Name="labelHelp" Content="Help:" HorizontalAlignment="Left" Margin="686,153,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="{DynamicResource {x:Static SystemColors.InfoTextBrushKey}}" Background="{DynamicResource {x:Static SystemColors.InactiveCaptionBrushKey}}"/>
+        <Label x:Name="labelHint" Content="Hint:" HorizontalAlignment="Left" Margin="686,153,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="{DynamicResource {x:Static SystemColors.InfoTextBrushKey}}" Background="{DynamicResource {x:Static SystemColors.InactiveCaptionBrushKey}}"/>
         <Button x:Name="buttonClear" Content="Clear field" HorizontalAlignment="Left" Margin="88,333,0,0" VerticalAlignment="Top" Width="132" Height="47" Click="buttonClear_Click"/>
         <Label x:Name="labelShips" Content="Ships:" HorizontalAlignment="Left" Margin="88,97,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Background="{DynamicResource {x:Static SystemColors.InactiveCaptionBrushKey}}"/>
     </Grid>
