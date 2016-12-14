@@ -1,17 +1,5 @@
 ﻿using BattleShip.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace BattleShip.UI
 {
@@ -30,15 +18,18 @@ namespace BattleShip.UI
         private void buttonOnePlayer_Click(object sender, RoutedEventArgs e)
         {
             ShipPlacementWindow ShipPlacementWindow = new ShipPlacementWindow();
-            ShipPlacementWindow.ShowDialog();
+            ShipPlacementWindow.Show();
+            Close();
         }
 
         private void buttonBack_Click(object sender, RoutedEventArgs e)
         {
             MainWindow MainWindow = new MainWindow();
-            MainWindow.ShowDialog();
+            MainWindow.Show();
+            Close();
         }
 
+        #region Settings
         private void checkBoxSound_Click(object sender, RoutedEventArgs e)
         {
             GameSettings.GetInstance().GameplaySounds = checkBoxSound.IsChecked.Value;
@@ -48,5 +39,6 @@ namespace BattleShip.UI
         {
             GameSettings.GetInstance().BackgroundMusic = checkBoxMusic.IsChecked.Value;
         }
+        #endregion
     }
 }

@@ -17,7 +17,7 @@
             </Button.Background>
         </Button>
         <Button x:Name="buttonLeaderboard" Content="Leaderboard" HorizontalAlignment="Left" Margin="450,304,0,0" VerticalAlignment="Top" Width="104" Height="128"/>
-        <CheckBox x:Name="checkBoxMusic" Content="Background Music" HorizontalAlignment="Left" Margin="820,30,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <CheckBox x:Name="checkBoxMusic" Content="Background Music" HorizontalAlignment="Left" Margin="820,30,0,0" VerticalAlignment="Top" FontWeight="Bold" Click="checkBoxMusic_Click"/>
         <CheckBox x:Name="checkBoxSound" Content="Gameplay Sounds" HorizontalAlignment="Left" Margin="820,10,0,0" VerticalAlignment="Top" FontWeight="Bold" Click="checkBoxSound_Click"/>
         <Label x:Name="labelCredits" Content="Credits: Yuriy Kirillov, Semyon Mitrofanov" HorizontalAlignment="Left" Margin="10,476,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
 
