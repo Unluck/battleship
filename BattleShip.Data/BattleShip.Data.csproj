@@ -65,7 +65,7 @@
     <Resource Include="Images\ButtonPlay.gif" />
     <Resource Include="Images\PlayingBG.jpg" />
     <Resource Include="Images\FieldBG.png" />
-    <Resource Include="Images\Favicon.png" />
+    <Resource Include="Images\GameIcon.png" />
     <Content Include="Sounds\background.mp3" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

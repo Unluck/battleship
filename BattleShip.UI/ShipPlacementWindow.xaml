@@ -6,12 +6,12 @@
         xmlns:local="clr-namespace:BattleShip.UI"
         mc:Ignorable="d"
         Title="Battleship" Height="540" Width="960" ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
-        Icon="/BattleShip.Data;component/Images/Favicon.png">
+        Icon="/BattleShip.Data;component/Images/GameIcon.png">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="/BattleShip.Data;component/Images/MainMenuBG.jpg"/>
         </Grid.Background>
-        <Canvas x:Name="canvasField" HorizontalAlignment="Left" Height="300" Margin="330,80,0,0" VerticalAlignment="Top" Width="300" MouseLeftButtonDown="canvasField_MouseLeftButtonDown">
+        <Canvas x:Name="canvasField" HorizontalAlignment="Left" Height="300" Margin="330,90,0,0" VerticalAlignment="Top" Width="300" MouseLeftButtonDown="canvasField_MouseLeftButtonDown">
             <Canvas.Background>
                 <ImageBrush ImageSource="/BattleShip.Data;component/Images/FieldBG.png"/>
             </Canvas.Background>
@@ -20,10 +20,11 @@
         <CheckBox x:Name="checkBoxSound" Content="Gameplay Sounds" HorizontalAlignment="Left" Margin="820,10,0,0" VerticalAlignment="Top" FontWeight="Bold" Click="checkBoxSound_Click"/>
         <Button x:Name="buttonPlace" Content="Add ship" HorizontalAlignment="Left" Margin="264,438,0,0" VerticalAlignment="Top" Width="132" Height="47" Click="buttonPlace_Click"/>
         <Button x:Name="buttonStart" Content="Start game" HorizontalAlignment="Left" Margin="564,438,0,0" VerticalAlignment="Top" Width="132" Height="47" RenderTransformOrigin="0.062,0.276" Click="buttonStart_Click"/>
-        <Label x:Name="labelUserName" Content="Enter Your Name:" HorizontalAlignment="Left" Margin="361,25,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-        <TextBox x:Name="textBoxUserName" HorizontalAlignment="Left" Height="22" Margin="491,31,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.308,0.205"/>
+        <Label x:Name="labelUserName" Content="Enter Your Name:" HorizontalAlignment="Left" Margin="353,25,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <TextBox x:Name="textBoxUserName" HorizontalAlignment="Left" Height="22" Margin="483,31,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.308,0.205"/>
         <Label x:Name="labelHint" Content="Hint:" HorizontalAlignment="Left" Margin="686,153,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="{DynamicResource {x:Static SystemColors.InfoTextBrushKey}}" Background="{DynamicResource {x:Static SystemColors.InactiveCaptionBrushKey}}"/>
         <Button x:Name="buttonClear" Content="Clear field" HorizontalAlignment="Left" Margin="88,333,0,0" VerticalAlignment="Top" Width="132" Height="47" Click="buttonClear_Click"/>
         <Label x:Name="labelShips" Content="Ships:" HorizontalAlignment="Left" Margin="88,97,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Background="{DynamicResource {x:Static SystemColors.InactiveCaptionBrushKey}}"/>
+        <Button x:Name="buttonBack" Content="Back" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="96" Height="38" Click="buttonBack_Click"/>
     </Grid>
 </Window>

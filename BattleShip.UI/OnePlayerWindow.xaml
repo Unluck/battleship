@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:BattleShip.UI"
         mc:Ignorable="d"
         Title="Battleship" Height="540" Width="960" ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
-        Icon="/BattleShip.Data;component/Images/Favicon.png">
+        Icon="/BattleShip.Data;component/Images/GameIcon.png">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="/BattleShip.Data;component/Images/PlayingBG.jpg"/>

@@ -1,5 +1,6 @@
 ﻿using BattleShip.Data;
 using BattleShip.Logic;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Shapes;
@@ -10,12 +11,12 @@ namespace BattleShip.UI
     /// Логика взаимодействия для OnePlayerWindow.xaml
     /// </summary>
     public partial class OnePlayerWindow : Window
-    {        
+    {
         private void DisplayShip(int x, int y)
         {
             Rectangle rc = new Rectangle();
             SolidColorBrush scb = new SolidColorBrush();
-            scb.Color = Color.FromRgb(255, 000, 255);
+            scb.Color = Color.FromRgb(0, 191, 255);
             rc.Fill = scb;
             rc.Width = 30;
             rc.Height = 30;
@@ -26,25 +27,19 @@ namespace BattleShip.UI
             ownField.Children.Add(rc);
         }
 
-        public OnePlayerWindow()
+        public OnePlayerWindow(List<Ship> ships)
         {
             InitializeComponent();
             checkBoxMusic.IsChecked = GameSettings.GetInstance().BackgroundMusic;
             checkBoxSound.IsChecked = GameSettings.GetInstance().GameplaySounds;
 
             ComputerLogic cl = new ComputerLogic();
-            ShipPlacementWindow sw = new ShipPlacementWindow();
             cl.RandomPlaceShip();
-            foreach (var s1 in sw.ownShip)
-            {
-                foreach (var s2 in s1.ShipLoc)
-                {
-                    DisplayShip(s2.x, s2.y);
-                }
-            }
+            foreach (var ship in ships)
+                foreach (var location in ship.ShipLoc)
+                    DisplayShip(location.x, location.y);
 
             foreach (var s1 in cl.enemyShip)
-            {
                 foreach (var s2 in s1.ShipLoc)
                 {
                     Rectangle rc = new Rectangle();
@@ -59,7 +54,6 @@ namespace BattleShip.UI
                     rc.Margin = margin;
                     enemyField.Children.Add(rc);
                 }
-            }
         }
 
         #region Settings

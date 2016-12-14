@@ -22,6 +22,7 @@ namespace BattleShip.UI
             ModeSelectionWindow.Show();
             Close();
         }
+
         #region Settings
         private void checkBoxSound_Click(object sender, RoutedEventArgs e)
         {
