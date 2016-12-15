@@ -1,16 +1,26 @@
 ﻿using BattleShip.Data;
 using BattleShip.Logic;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace BattleShip.UI
 {
     /// <summary>
-    /// Логика взаимодействия для OnePlayerWindow.xaml
+    /// Логика взаимодействия для OnePlayerPage.xaml
     /// </summary>
-    public partial class OnePlayerWindow : Window
+    public partial class OnePlayerPage : Page
     {
         private void DisplayShip(int x, int y)
         {
@@ -27,7 +37,7 @@ namespace BattleShip.UI
             ownField.Children.Add(rc);
         }
 
-        public OnePlayerWindow(List<Ship> ships)
+        public OnePlayerPage(List<Ship> ships)
         {
             InitializeComponent();
             checkBoxMusic.IsChecked = GameSettings.GetInstance().BackgroundMusic;

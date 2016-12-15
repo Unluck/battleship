@@ -2,24 +2,26 @@
 using BattleShip.Logic;
 using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace BattleShip.UI
 {
     /// <summary>
-    /// Логика взаимодействия для ShipPlacementWindow.xaml
+    /// Логика взаимодействия для ShipPlacementPage.xaml
     /// </summary>
-    public partial class ShipPlacementWindow : Window
+    public partial class ShipPlacementPage : Page
     {
         List<Location> clicks = new List<Location>();
         List<Location> clicksExtended = new List<Location>();
         public List<Ship> ships = new List<Ship>();
         int[,] field = new int[12, 12];
-        int[] cells = new int[4] { 4, 3, 2, 1};
+        int[] cells = new int[4] { 4, 3, 2, 1 };
 
-        public ShipPlacementWindow()
+        public ShipPlacementPage()
         {
             InitializeComponent();
             checkBoxMusic.IsChecked = GameSettings.GetInstance().BackgroundMusic;
@@ -40,7 +42,7 @@ namespace BattleShip.UI
 
             if (ships.Count != 0)
                 foreach (var ship in ships)
-                    foreach (var location in ship.ShipLoc)                 
+                    foreach (var location in ship.ShipLoc)
                         if (location.x == x && location.y == y)
                         {
                             labelHint.Content = "Hint: Cell already exists.";
@@ -48,7 +50,7 @@ namespace BattleShip.UI
                         }
 
             foreach (var click in clicks)
-                if(click.x == x && click.y == y)
+                if (click.x == x && click.y == y)
                 {
                     labelHint.Content = "Hint: Cell already exists.";
                     return;
@@ -110,7 +112,7 @@ namespace BattleShip.UI
             {
                 labelHint.Content = "Hint: Place ship firstly.";
                 return;
-            }            
+            }
 
             if (cells[clicks.Count - 1] == 0)
             {
@@ -154,9 +156,9 @@ namespace BattleShip.UI
                 }
 
             GameSettings.GetInstance().UserName = textBoxUserName.Text;
-            OnePlayerWindow OnePlayerWindow = new OnePlayerWindow(ships);
-            OnePlayerWindow.Show();
-            Close();
+
+            OnePlayerPage onePlayerPage = new OnePlayerPage(ships);
+            NavigationService.Navigate(onePlayerPage);
         }
 
         private void buttonClear_Click(object sender, RoutedEventArgs e)
@@ -215,9 +217,8 @@ namespace BattleShip.UI
 
         private void buttonBack_Click(object sender, RoutedEventArgs e)
         {
-            ModeSelectionWindow ModeSelectionWindow = new ModeSelectionWindow();
-            ModeSelectionWindow.Show();
-            Close();
+            ModeSelectionPage modeSelectionPage = new ModeSelectionPage();
+            NavigationService.Navigate(modeSelectionPage);
         }
 
         #region Settings

@@ -1,14 +1,16 @@
 ﻿using BattleShip.Data;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Navigation;
 
 namespace BattleShip.UI
 {
     /// <summary>
-    /// Логика взаимодействия для ModeSelectionWindow.xaml
+    /// Логика взаимодействия для ModeSelectionPage.xaml
     /// </summary>
-    public partial class ModeSelectionWindow : Window
+    public partial class ModeSelectionPage : Page
     {
-        public ModeSelectionWindow()
+        public ModeSelectionPage()
         {
             InitializeComponent();
             checkBoxMusic.IsChecked = GameSettings.GetInstance().BackgroundMusic;
@@ -17,16 +19,14 @@ namespace BattleShip.UI
 
         private void buttonOnePlayer_Click(object sender, RoutedEventArgs e)
         {
-            ShipPlacementWindow ShipPlacementWindow = new ShipPlacementWindow();
-            ShipPlacementWindow.Show();
-            Close();
+            ShipPlacementPage shipPlacementPage = new ShipPlacementPage();
+            NavigationService.Navigate(shipPlacementPage);
         }
 
         private void buttonBack_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow MainWindow = new MainWindow();
-            MainWindow.Show();
-            Close();
+            StartingPage startingPage = new StartingPage();
+            NavigationService.Navigate(startingPage);
         }
 
         #region Settings
