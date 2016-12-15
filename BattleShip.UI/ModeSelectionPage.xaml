@@ -1,0 +1,33 @@
+﻿<Page x:Class="BattleShip.UI.ModeSelectionPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BattleShip.UI"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+      Title="BattleShip" Height="540" Width="960">
+
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/BattleShip.Data;component/Images/MainMenuBG.jpg"/>
+        </Grid.Background>
+        <CheckBox x:Name="checkBoxMusic" Content="Background Music" HorizontalAlignment="Left" Margin="820,30,0,0" VerticalAlignment="Top" FontWeight="Bold" Click="checkBoxMusic_Click"/>
+        <CheckBox x:Name="checkBoxSound" Content="Gameplay Sounds" HorizontalAlignment="Left" Margin="820,10,0,0" VerticalAlignment="Top" FontWeight="Bold" Click="checkBoxSound_Click"/>
+        <Button x:Name="buttonOnePlayer" Content="" HorizontalAlignment="Left" Margin="330,125,0,0" VerticalAlignment="Top" Width="300" Height="100" Click="buttonOnePlayer_Click" BorderBrush="{x:Null}" Template="{DynamicResource ButtonControlTemplate1}">
+            <Button.Background>
+                <ImageBrush ImageSource="/BattleShip.Data;component/Images/Buttons/OnePlayerButton.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="buttonTwoPlayers" Content="" HorizontalAlignment="Left" Margin="330,300,0,0" VerticalAlignment="Top" Width="300" Height="100" BorderBrush="{x:Null}" Template="{DynamicResource ButtonControlTemplate1}">
+            <Button.Background>
+                <ImageBrush ImageSource="/BattleShip.Data;component/Images/Buttons/TwoPlayersButton.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="buttonBack" Content="" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="99" Height="33" Click="buttonBack_Click" BorderBrush="{x:Null}" Template="{DynamicResource ButtonControlTemplate1}">
+            <Button.Background>
+                <ImageBrush ImageSource="/BattleShip.Data;component/Images/Buttons/BackButton.png"/>
+            </Button.Background>
+        </Button>
+    </Grid>
+</Page>

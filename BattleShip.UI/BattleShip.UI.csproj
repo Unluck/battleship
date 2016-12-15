@@ -55,36 +55,42 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ModeSelectionWindow.xaml.cs">
-      <DependentUpon>ModeSelectionWindow.xaml</DependentUpon>
+    <Compile Include="GameWindow.xaml.cs">
+      <DependentUpon>GameWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="OnePlayerWindow.xaml.cs">
-      <DependentUpon>OnePlayerWindow.xaml</DependentUpon>
+    <Compile Include="ModeSelectionPage.xaml.cs">
+      <DependentUpon>ModeSelectionPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ShipPlacementWindow.xaml.cs">
-      <DependentUpon>ShipPlacementWindow.xaml</DependentUpon>
+    <Compile Include="OnePlayerPage.xaml.cs">
+      <DependentUpon>OnePlayerPage.xaml</DependentUpon>
     </Compile>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Compile Include="ShipPlacementPage.xaml.cs">
+      <DependentUpon>ShipPlacementPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StartingPage.xaml.cs">
+      <DependentUpon>StartingPage.xaml</DependentUpon>
+    </Compile>
+    <Page Include="GameWindow.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Page Include="ModeSelectionWindow.xaml">
+    <Page Include="ModeSelectionPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="OnePlayerWindow.xaml">
+    <Page Include="OnePlayerPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ShipPlacementWindow.xaml">
+    <Page Include="ShipPlacementPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StartingPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -116,6 +122,9 @@
       <Project>{73c87c35-1120-47ed-b40f-51af71110367}</Project>
       <Name>BattleShip.Logic</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ClearFieldButton.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

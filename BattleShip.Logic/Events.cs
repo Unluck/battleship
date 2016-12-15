@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BattleShip.Logic
+﻿namespace BattleShip.Logic
 {
     public class Events
     {
@@ -30,9 +24,8 @@ namespace BattleShip.Logic
                         else return shotStatus.hit;
                     }
                 }
-            } return shotStatus.miss;
-        }
-
-        
+            }
+            return shotStatus.miss;
+        } 
     }
 }
