@@ -16,6 +16,7 @@ namespace BattleShip.UI
     {
         ShipPlacement shipPlacement = new ShipPlacement();
         Repository repo = Repository.GetInstance();
+        ComputerLogic cl = new ComputerLogic();
 
         public ShipPlacementPage()
         {
@@ -122,5 +123,12 @@ namespace BattleShip.UI
             GameSettings.GetInstance().BackgroundMusic = checkBoxMusic.IsChecked.Value;
         }
         #endregion
+
+
+        private void RandomButton_Click(object sender, RoutedEventArgs e)
+        {
+            cl.RandomPlaceShip(repo.Ships);
+            repo.Cells = new int[4]{ 0,0,0,0 };
+        }
     }
 }
