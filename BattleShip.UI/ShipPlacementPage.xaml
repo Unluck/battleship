@@ -19,29 +19,34 @@
         </Canvas>
         <CheckBox x:Name="checkBoxMusic" Content="Background Music" HorizontalAlignment="Left" Margin="820,30,0,0" VerticalAlignment="Top" FontWeight="Bold" Click="checkBoxMusic_Click"/>
         <CheckBox x:Name="checkBoxSound" Content="Gameplay Sounds" HorizontalAlignment="Left" Margin="820,10,0,0" VerticalAlignment="Top" FontWeight="Bold" Click="checkBoxSound_Click"/>
-        <Button x:Name="buttonPlace" Content="" HorizontalAlignment="Left" Margin="256,438,0,0" VerticalAlignment="Top" Width="150" Height="50" Click="buttonPlace_Click" BorderBrush="{x:Null}" Template="{DynamicResource ButtonControlTemplate1}">
+        <Button x:Name="buttonPlace" Content="ADD SHIP" HorizontalAlignment="Left" Margin="256,438,0,0" VerticalAlignment="Top" Width="150" Height="50" FontSize="16" FontFamily="Verdana" FontWeight="Bold" Foreground="White" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}" Click="buttonPlace_Click">
             <Button.Background>
-                <ImageBrush ImageSource="/BattleShip.Data;component/Images/Buttons/AddShipButton.png"/>
+                <ImageBrush ImageSource="/BattleShip.Data;component/Images/ButtonBG.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="buttonStart" Content="" HorizontalAlignment="Left" Margin="554,438,0,0" VerticalAlignment="Top" Width="150" Height="50" RenderTransformOrigin="0.062,0.276" Click="buttonStart_Click" BorderBrush="{x:Null}" Template="{DynamicResource ButtonControlTemplate1}">
+        <Button x:Name="buttonStart" Content="START GAME" HorizontalAlignment="Left" Margin="554,438,0,0" VerticalAlignment="Top" Width="150" Height="50" FontSize="16" FontFamily="Verdana" FontWeight="Bold" Foreground="White" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}" Click="buttonStart_Click">
             <Button.Background>
-                <ImageBrush ImageSource="/BattleShip.Data;component/Images/Buttons/StartGameButton.png"/>
+                <ImageBrush ImageSource="/BattleShip.Data;component/Images/ButtonBG.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="buttonClear" Content="CLEAR FIELD" HorizontalAlignment="Left" Margin="88,340,0,0" VerticalAlignment="Top" Width="150" Height="50" FontSize="16" FontFamily="Verdana" FontWeight="Bold" Foreground="White" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}" Click="buttonClear_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="/BattleShip.Data;component/Images/ButtonBG.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="buttonBack" Content="BACK" Margin="10,10,0,0" VerticalAlignment="Top" Width="99" Height="33" FontSize="16" FontFamily="Verdana" FontWeight="Bold" Foreground="White" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Click="buttonBack_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="/BattleShip.Data;component/Images/ButtonBG.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="buttonRandom" Content="PLACE RANDOM" HorizontalAlignment="Left" Margin="88,272,0,0" VerticalAlignment="Top" Width="150" Height="50" FontSize="16" FontFamily="Verdana" FontWeight="Bold" Foreground="White" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}">
+            <Button.Background>
+                <ImageBrush ImageSource="/BattleShip.Data;component/Images/ButtonBG.png"/>
             </Button.Background>
         </Button>
         <Label x:Name="labelUserName" Content="Enter Your Name:" HorizontalAlignment="Left" Margin="353,25,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
         <TextBox x:Name="textBoxUserName" HorizontalAlignment="Left" Height="22" Margin="483,31,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.308,0.205"/>
-        <Label x:Name="labelHint" Content="Hint:" HorizontalAlignment="Left" Margin="686,153,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="{DynamicResource {x:Static SystemColors.InfoTextBrushKey}}" Background="{DynamicResource {x:Static SystemColors.InactiveCaptionBrushKey}}"/>
-        <Button x:Name="buttonClear" Content="" HorizontalAlignment="Left" Margin="88,340,0,0" VerticalAlignment="Top" Width="150" Height="50" Click="buttonClear_Click" BorderBrush="{x:Null}" Template="{DynamicResource ButtonControlTemplate1}">
-            <Button.Background>
-                <ImageBrush ImageSource="/BattleShip.Data;component/Images/Buttons/ClearFieldButton.png"/>
-            </Button.Background>
-        </Button>
-        <Label x:Name="labelShips" Content="Ships:" HorizontalAlignment="Left" Margin="88,97,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Background="{DynamicResource {x:Static SystemColors.InactiveCaptionBrushKey}}"/>
-        <Button x:Name="buttonBack" Content="" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="99" Height="33" Click="buttonBack_Click" BorderBrush="{x:Null}" Template="{DynamicResource ButtonControlTemplate1}">
-            <Button.Background>
-                <ImageBrush ImageSource="/BattleShip.Data;component/Images/Buttons/BackButton.png"/>
-            </Button.Background>
-        </Button>
+        <Label x:Name="labelHint" Content="Hint:" HorizontalAlignment="Left" Margin="703,90,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="{DynamicResource {x:Static SystemColors.InfoTextBrushKey}}" Background="{DynamicResource {x:Static SystemColors.InactiveCaptionBrushKey}}"/>
+        <Label x:Name="labelShips" Content="Ships:" HorizontalAlignment="Left" Margin="88,90,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Background="{DynamicResource {x:Static SystemColors.InactiveCaptionBrushKey}}"/>
     </Grid>
 </Page>

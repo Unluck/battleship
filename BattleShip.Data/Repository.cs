@@ -30,7 +30,8 @@ namespace BattleShip.Data
             "Hint: Place ship firstly.",
             "Hint: You do not have any\nships of this type left.",
             "Hint: Ship added.",
-            "Hint: Place all ships firstly."
+            "Hint: Place all ships firstly.",
+            "Hint: Field cleared."
         };
     }
 }

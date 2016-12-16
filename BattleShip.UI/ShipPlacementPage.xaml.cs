@@ -1,6 +1,5 @@
 ﻿using BattleShip.Data;
 using BattleShip.Logic;
-using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -102,6 +101,8 @@ namespace BattleShip.UI
         {
             shipPlacement.Clear();
             canvasField.Children.Clear();
+            labelHint.Content = repo.LabelContent[10];
+            labelShips.Content = string.Format("4 cells: {0}\n3 cells: {1}\n2 cells: {2}\n1 cell: {3}", repo.Cells[3], repo.Cells[2], repo.Cells[1], repo.Cells[0]);
         }
 
         private void buttonBack_Click(object sender, RoutedEventArgs e)
