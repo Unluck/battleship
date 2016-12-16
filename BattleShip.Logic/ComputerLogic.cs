@@ -5,10 +5,8 @@ namespace BattleShip.Logic
 {
     public class ComputerLogic
     {
-        public List<Ship> enemyShip = new List<Ship>();
+        public static List<Ship> enemyShip = new List<Ship>();
         int[,] localShip = new int[10, 10];
-
-
 
         public void RandomPlaceShip()
         {
@@ -219,5 +217,77 @@ namespace BattleShip.Logic
             }
 
         }
+
+        public void ComputerActionFirstShot(int[,] userShip)
+        {
+            Random r = new Random();
+            int x = r.Next(0, 10);
+            int y = r.Next(0, 10);
+            if (userShip[x, y] == 1)
+            {
+                userShip[x, y] = 2;
+                int shot = r.Next(0, 5);
+                AutoChecking(userShip, shot, x, y);
+            }
+        }
+
+        private void AutoChecking(int[,] mass, int check, int x, int y)
+        {
+            if (check == 0)
+            {
+                if (mass[x + 1, y] == 1)
+                {
+                    mass[x + 1, y] = 2;
+                    if (mass[x + 2, y] == 1)
+                    {
+                        mass[x + 2, y] = 2;
+                        if (mass[x + 3, y] == 1)
+                            mass[x + 3, y] = 2;
+                    }
+                }
+            }
+            if (check == 1)
+            {
+                if (mass[x - 1, y] == 1)
+                {
+                    mass[x - 1, y] = 2;
+                    if (mass[x - 2, y] == 1)
+                    {
+                        mass[x - 2, y] = 2;
+                        if (mass[x - 3, y] == 1)
+                            mass[x - 3, y] = 2;
+                    }
+                }
+            }
+            if (check == 2)
+            {
+                if (mass[x , y+1] == 1)
+                {
+                    mass[x , y+1] = 2;
+                    if (mass[x , y+2] == 1)
+                    {
+                        mass[x, y+2] = 2;
+                        if (mass[x, y+3] == 1)
+                            mass[x , y+3] = 2;
+                    }
+                }
+            }
+            if (check == 2)
+            {
+                if (mass[x, y - 1] == 1)
+                {
+                    mass[x, y - 1] = 2;
+                    if (mass[x, y - 2] == 1)
+                    {
+                        mass[x, y - 2] = 2;
+                        if (mass[x, y - 3] == 1)
+                            mass[x, y - 3] = 2;
+                    }
+                }
+            }
+
+        }
+
+
     }
 }

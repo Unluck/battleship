@@ -41,7 +41,7 @@ namespace BattleShip.UI
                 foreach (var location in ship.ShipLoc)
                     DisplayShip(location.x, location.y);
 
-            foreach (var s1 in cl.enemyShip)
+            foreach (var s1 in ComputerLogic.enemyShip)
                 foreach (var s2 in s1.ShipLoc)
                 {
                     Rectangle rc = new Rectangle();
