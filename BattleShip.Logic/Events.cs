@@ -4,8 +4,6 @@ namespace BattleShip.Logic
 {
     public class Events
     {
-        //public List<Ship> ownShip = new List<Ship>();
-        ComputerLogic cl = new ComputerLogic();
         public enum shotStatus
         {
             miss,
@@ -15,7 +13,7 @@ namespace BattleShip.Logic
         
         public shotStatus Shot(Location loc)
         {
-            foreach (var s1 in cl.enemyShip)
+            foreach (var s1 in ComputerLogic.enemyShip)
             {
                 foreach (var s2 in s1.ShipLoc)
                 {

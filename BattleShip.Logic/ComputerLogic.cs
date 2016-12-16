@@ -6,10 +6,8 @@ namespace BattleShip.Logic
 {
     public class ComputerLogic
     {
-        public List<Ship> enemyShip = new List<Ship>();
+        public static List<Ship> enemyShip = new List<Ship>();
         int[,] localShip = new int[10, 10];
-
-
 
         public void RandomPlaceShip()
         {
@@ -219,6 +217,31 @@ namespace BattleShip.Logic
                     localShip[s.x + 1, s.y + 1] = 1;
             }
 
+        }
+
+        public void ComputerActionFirstShot(List<Ship> userShips)
+        {
+            Random r = new Random();
+            int x = r.Next(0, 10);
+            int y = r.Next(0, 10);
+            foreach (var s in userShips)
+            {
+                foreach (var s1 in s.ShipLoc) // 1 2 (3) 4
+                {
+                    if(x==s1.x)
+                        if(y==s1.y)
+                        {
+                            s.Hits++;
+                            //вызов метода попадания
+
+
+                        }
+                    else
+                        {
+                            //вызов метода миса
+                        }
+                }
+            }
         }
     }
 }
