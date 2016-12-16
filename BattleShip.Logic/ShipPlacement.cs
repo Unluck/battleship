@@ -38,17 +38,7 @@ namespace BattleShip.Logic
 
             return 5;
         }
-        /*
-         0   "Hint: Place one ship of any type\nby clicking on cells.",
-         1   "Hint: Cell already exists.",
-         2   "Hint: You cannot place ship near\nexisting one.",
-         3   "Hint: Cells of one ship must be\nnear each other as single line.\nUse \"Add ship\" to place current\nship firstly.",
-         4   "Hint: Maximum size of a ship is 4 cells.\nUse \"Add ship\" to place current ship firstly.",
-         5   "Hint: Cell added.",
-         6   "Hint: Place ship firstly."
-         7   "Hint: You do not have any\nships of this type left."
-         8   "Hint: Ship added.",
-         9   "Hint: Place all ships firstly."*/
+
         public int PlaceShip()
         {
             var location = new Location[repo.Clicks.Count];

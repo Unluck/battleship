@@ -68,7 +68,7 @@ namespace BattleShip.UI
             {
                 labelHint.Content = repo.LabelContent[result];
 
-                if (result == 5)
+                if (result == 7)
                 {
                     for (int i = count; i > count - repo.Clicks.Count; i--)
                     {
