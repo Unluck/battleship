@@ -112,6 +112,12 @@ namespace BattleShip.UI
             NavigationService.Navigate(modeSelectionPage);
         }
 
+        private void buttonRandom_Click(object sender, RoutedEventArgs e)
+        {
+            cl.RandomPlaceShip(repo.Ships);
+            repo.Cells = new int[4] { 0, 0, 0, 0 };
+        }
+
         #region Settings
         private void checkBoxSound_Click(object sender, RoutedEventArgs e)
         {
@@ -123,12 +129,5 @@ namespace BattleShip.UI
             GameSettings.GetInstance().BackgroundMusic = checkBoxMusic.IsChecked.Value;
         }
         #endregion
-
-
-        private void RandomButton_Click(object sender, RoutedEventArgs e)
-        {
-            cl.RandomPlaceShip(repo.Ships);
-            repo.Cells = new int[4]{ 0,0,0,0 };
-        }
     }
 }

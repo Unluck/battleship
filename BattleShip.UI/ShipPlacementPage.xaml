@@ -39,7 +39,7 @@
                 <ImageBrush ImageSource="/BattleShip.Data;component/Images/ButtonBG.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="buttonRandom" Content="PLACE RANDOM" HorizontalAlignment="Left" Margin="88,272,0,0" VerticalAlignment="Top" Width="150" Height="50" FontSize="16" FontFamily="Verdana" FontWeight="Bold" Foreground="White" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}">
+        <Button x:Name="buttonRandom" Content="PLACE RANDOM" HorizontalAlignment="Left" Margin="88,272,0,0" VerticalAlignment="Top" Width="150" Height="50" FontSize="16" FontFamily="Verdana" FontWeight="Bold" Foreground="White" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}" Click="buttonRandom_Click">
             <Button.Background>
                 <ImageBrush ImageSource="/BattleShip.Data;component/Images/ButtonBG.png"/>
             </Button.Background>
