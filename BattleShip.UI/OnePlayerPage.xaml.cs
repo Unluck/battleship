@@ -14,6 +14,8 @@ namespace BattleShip.UI
     /// </summary>
     public partial class OnePlayerPage : Page
     {
+        List<Ship> ranShip = new List<Ship>();
+        ComputerLogic cl = new ComputerLogic();
         private void DisplayShip(int x, int y)
         {
             Rectangle rc = new Rectangle();
@@ -28,13 +30,48 @@ namespace BattleShip.UI
             rc.Margin = margin;
             canvasPlayerField.Children.Add(rc);
         }
+        public void DisplayShot(int x, int y)
+        {
+            Line ln = new Line();
+            ln.Stroke = System.Windows.Media.Brushes.Black;
+            ln.X1 = x*30;
+            ln.X2 = x*30+30;
+            ln.Y1 = y*30;
+            ln.Y2 = y*30+30;
+            ln.HorizontalAlignment = HorizontalAlignment.Left;
+            ln.StrokeThickness = 2;
+            canvasPlayerField.Children.Add(ln);
+            Line ln1 = new Line();
+            ln1.Stroke = System.Windows.Media.Brushes.Black;
+            ln1.X1 = x * 30;
+            ln1.X2 = x * 30 + 30;
+            ln1.Y1 = y * 30;
+            ln1.Y2 = y * 30 + 30;
+            ln1.HorizontalAlignment = HorizontalAlignment.Right;
+            ln1.StrokeThickness = 2;
+            canvasPlayerField.Children.Add(ln);
 
+        }
+        public void DisplayMiss(int x,int y)
+        {
+            Ellipse el = new Ellipse();
+            SolidColorBrush scb = new SolidColorBrush();
+            scb.Color = Color.FromRgb(192, 192, 192);
+            el.Fill = scb;
+            el.Width = 15;
+            el.Height = 15;
+            Thickness margin = el.Margin;
+            margin.Top = y * 37.5;
+            margin.Left = x * 37.5;
+            el.Margin = margin;
+            canvasPlayerField.Children.Add(el);
+        }
         public OnePlayerPage(List<Ship> ships)
         {
             InitializeComponent();
             checkBoxMusic.IsChecked = GameSettings.GetInstance().BackgroundMusic;
             checkBoxSound.IsChecked = GameSettings.GetInstance().GameplaySounds;
-            ComputerLogic cl = new ComputerLogic();
+            
 
             cl.RandomPlaceShip();
             foreach (var ship in ships)
@@ -68,6 +105,8 @@ namespace BattleShip.UI
             var shotStatus = ev.Shot(p);
 
             labelStatus.Content = shotStatus;
+            //cl.ComputerActionFirstShot(ships);
+            
         }
 
         #region Settings

@@ -219,76 +219,29 @@ namespace BattleShip.Logic
 
         }
 
-        public void ComputerActionFirstShot(int[,] userShip)
+        public void ComputerActionFirstShot(List<Ship> userShips)
         {
             Random r = new Random();
             int x = r.Next(0, 10);
             int y = r.Next(0, 10);
-            if (userShip[x, y] == 1)
+            foreach (var s in userShips)
             {
-                userShip[x, y] = 2;
-                int shot = r.Next(0, 5);
-                AutoChecking(userShip, shot, x, y);
+                foreach (var s1 in s.ShipLoc) // 1 2 (3) 4
+                {
+                    if(x==s1.x)
+                        if(y==s1.y)
+                        {
+                            s.Hits++;
+                            //вызов метода попадания
+
+
+                        }
+                    else
+                        {
+                            //вызов метода миса
+                        }
+                }
             }
         }
-
-        private void AutoChecking(int[,] mass, int check, int x, int y)
-        {
-            if (check == 0)
-            {
-                if (mass[x + 1, y] == 1)
-                {
-                    mass[x + 1, y] = 2;
-                    if (mass[x + 2, y] == 1)
-                    {
-                        mass[x + 2, y] = 2;
-                        if (mass[x + 3, y] == 1)
-                            mass[x + 3, y] = 2;
-                    }
-                }
-            }
-            if (check == 1)
-            {
-                if (mass[x - 1, y] == 1)
-                {
-                    mass[x - 1, y] = 2;
-                    if (mass[x - 2, y] == 1)
-                    {
-                        mass[x - 2, y] = 2;
-                        if (mass[x - 3, y] == 1)
-                            mass[x - 3, y] = 2;
-                    }
-                }
-            }
-            if (check == 2)
-            {
-                if (mass[x , y+1] == 1)
-                {
-                    mass[x , y+1] = 2;
-                    if (mass[x , y+2] == 1)
-                    {
-                        mass[x, y+2] = 2;
-                        if (mass[x, y+3] == 1)
-                            mass[x , y+3] = 2;
-                    }
-                }
-            }
-            if (check == 2)
-            {
-                if (mass[x, y - 1] == 1)
-                {
-                    mass[x, y - 1] = 2;
-                    if (mass[x, y - 2] == 1)
-                    {
-                        mass[x, y - 2] = 2;
-                        if (mass[x, y - 3] == 1)
-                            mass[x, y - 3] = 2;
-                    }
-                }
-            }
-
-        }
-
-
     }
 }
