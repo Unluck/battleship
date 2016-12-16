@@ -15,6 +15,7 @@ namespace BattleShip.Data
         }
 
         public List<Ship> Ships { get; set; } = new List<Ship>();
+        public List<Ship> EnemyShips { get; set; } = new List<Ship>();
         public List<Location> Clicks { get; set; } = new List<Location>();
         public List<Location> ClicksExtended { get; set; } = new List<Location>();
         public int[,] Field { get; set; } = new int[12, 12];

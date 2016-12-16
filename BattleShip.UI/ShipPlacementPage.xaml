@@ -43,5 +43,6 @@
                 <ImageBrush ImageSource="/BattleShip.Data;component/Images/Buttons/BackButton.png"/>
             </Button.Background>
         </Button>
+        <Button x:Name="RandomButton" Content="Button" HorizontalAlignment="Left" Margin="803,424,0,0" VerticalAlignment="Top" Width="75" Click="RandomButton_Click"/>
     </Grid>
 </Page>

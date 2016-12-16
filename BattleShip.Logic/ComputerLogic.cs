@@ -6,10 +6,12 @@ namespace BattleShip.Logic
 {
     public class ComputerLogic
     {
-        public static List<Ship> enemyShip = new List<Ship>();
+        Repository repo = Repository.GetInstance();
+        Events ev = new Events();
         int[,] localShip = new int[10, 10];
+        int[,] massShips = new int[10, 10];
 
-        public void RandomPlaceShip()
+        public void RandomPlaceShip(List<Ship> listShips)
         {
             Random r = new Random();
             for (int i = 4; i > 0; i--)
@@ -45,7 +47,7 @@ namespace BattleShip.Logic
                                 j = --j;
                                 continue;
                             }
-                            enemyShip.Add(new Ship(i, 0, new Location[] { p1, p2, p3, p4 }));
+                            listShips.Add(new Ship(i, 0, new Location[] { p1, p2, p3, p4 }));
                             CheckUniqueShip(new Location[] { p1, p2, p3, p4 });
                         }
                         if (position == 1)
@@ -74,7 +76,7 @@ namespace BattleShip.Logic
                                 j = --j;
                                 continue;
                             }
-                            enemyShip.Add(new Ship(i, 0, new Location[] { p1, p2, p3, p4 }));
+                            listShips.Add(new Ship(i, 0, new Location[] { p1, p2, p3, p4 }));
                             CheckUniqueShip(new Location[] { p1, p2, p3, p4 });
                         }
                     }
@@ -104,7 +106,7 @@ namespace BattleShip.Logic
                                 j = --j;
                                 continue;
                             }
-                            enemyShip.Add(new Ship(i, 0, new Location[] { p1, p2, p3 }));
+                            listShips.Add(new Ship(i, 0, new Location[] { p1, p2, p3 }));
                             CheckUniqueShip(new Location[] { p1, p2, p3 });
                         }
                         if (position == 1)
@@ -127,7 +129,7 @@ namespace BattleShip.Logic
                                 j = --j;
                                 continue;
                             }
-                            enemyShip.Add(new Ship(i, 0, new Location[] { p1, p2, p3 }));
+                            listShips.Add(new Ship(i, 0, new Location[] { p1, p2, p3 }));
                             CheckUniqueShip(new Location[] { p1, p2, p3 });
                         }
                     }
@@ -151,7 +153,7 @@ namespace BattleShip.Logic
                                 j = --j;
                                 continue;
                             }
-                            enemyShip.Add(new Ship(i, 0, new Location[] { p1, p2 }));
+                            listShips.Add(new Ship(i, 0, new Location[] { p1, p2 }));
                             CheckUniqueShip(new Location[] { p1, p2 });
                         }
                         if (position == 1)
@@ -169,7 +171,7 @@ namespace BattleShip.Logic
                                     j = --j;
                                     continue;
                                 }
-                                enemyShip.Add(new Ship(i, 0, new Location[] { p1, p2 }));
+                                listShips.Add(new Ship(i, 0, new Location[] { p1, p2 }));
                                 CheckUniqueShip(new Location[] { p1, p2 });
                             }
                         }
@@ -185,7 +187,7 @@ namespace BattleShip.Logic
                             j = --j;
                             continue;
                         }
-                        enemyShip.Add(new Ship(i, 0, new Location[] { p1 }));
+                        listShips.Add(new Ship(i, 0, new Location[] { p1 }));
                         CheckUniqueShip(new Location[] { p1 });
                     }
                 }
@@ -219,28 +221,48 @@ namespace BattleShip.Logic
 
         }
 
-        public void ComputerActionFirstShot(List<Ship> userShips)
+        public Tuple<Location,bool> ComputerActionFirstShot()
         {
             Random r = new Random();
-            int x = r.Next(0, 10);
-            int y = r.Next(0, 10);
-            foreach (var s in userShips)
+            int x = r.Next(0,10);
+            int y = r.Next(0,10);
+            var location = new Location(x, y);
+
+            foreach (var s in repo.Ships)
             {
-                foreach (var s1 in s.ShipLoc) // 1 2 (3) 4
+                foreach (var s1 in s.ShipLoc)
                 {
-                    if(x==s1.x)
-                        if(y==s1.y)
-                        {
-                            s.Hits++;
-                            //вызов метода попадания
-
-
-                        }
-                    else
-                        {
-                            //вызов метода миса
-                        }
+                    massShips[s1.x, s1.y] = 1;
                 }
+            }
+            var status=ev.Shot(location, repo.Ships);
+            if(status==Events.shotStatus.miss)
+            {
+                massShips[x,y]=2;
+                return Tuple.Create(location, false);
+            }
+            if(status==Events.shotStatus.hit)
+            {
+                massShips[x, y] = 2;
+                int randomPos = r.Next(0, 5);
+                if(randomPos==0)
+                {
+
+                }
+            }
+            
+
+            
+                           
+           //return Tuple.Create(new Location(x, y), true);
+           //return Tuple.Create(new Location(x,y) ,false);
+        }
+
+        private void AutoChecking(int pos, int x, int y, int[,] mass)
+        {
+            if(pos==0)
+            {
+
             }
         }
     }

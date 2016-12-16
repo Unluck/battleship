@@ -14,6 +14,7 @@ namespace BattleShip.UI
     /// </summary>
     public partial class OnePlayerPage : Page
     {
+        Repository repo = Repository.GetInstance();
         List<Ship> ranShip = new List<Ship>();
         ComputerLogic cl = new ComputerLogic();
         private void DisplayShip(int x, int y)
@@ -32,24 +33,31 @@ namespace BattleShip.UI
         }
         public void DisplayShot(int x, int y)
         {
-            Line ln = new Line();
+            for (int i = 0; i < 2; i++)
+            {
+                Line ln = new Line();
+                ln.Stroke = System.Windows.Media.Brushes.Black;
+                ln.X1 = x * 30;
+                ln.X2 = x * 30 + 30;
+                ln.Y1 = y * 30;
+                ln.Y2 = y * 30 + 30;
+                if(i==0)
+                    ln.HorizontalAlignment = HorizontalAlignment.Left;
+                if (i == 1)
+                    ln.HorizontalAlignment = HorizontalAlignment.Right;
+                ln.StrokeThickness = 2;
+                canvasPlayerField.Children.Add(ln);
+            }
+            
+            /*Line ln = new Line();
             ln.Stroke = System.Windows.Media.Brushes.Black;
-            ln.X1 = x*30;
-            ln.X2 = x*30+30;
-            ln.Y1 = y*30;
-            ln.Y2 = y*30+30;
-            ln.HorizontalAlignment = HorizontalAlignment.Left;
+            ln.X1 = x * 30;
+            ln.X2 = x * 30 + 30;
+            ln.Y1 = y * 30;
+            ln.Y2 = y * 30 + 30;
+            ln.HorizontalAlignment = HorizontalAlignment.Right;
             ln.StrokeThickness = 2;
-            canvasPlayerField.Children.Add(ln);
-            Line ln1 = new Line();
-            ln1.Stroke = System.Windows.Media.Brushes.Black;
-            ln1.X1 = x * 30;
-            ln1.X2 = x * 30 + 30;
-            ln1.Y1 = y * 30;
-            ln1.Y2 = y * 30 + 30;
-            ln1.HorizontalAlignment = HorizontalAlignment.Right;
-            ln1.StrokeThickness = 2;
-            canvasPlayerField.Children.Add(ln);
+            canvasPlayerField.Children.Add(ln);*/
 
         }
         public void DisplayMiss(int x,int y)
@@ -61,24 +69,24 @@ namespace BattleShip.UI
             el.Width = 15;
             el.Height = 15;
             Thickness margin = el.Margin;
-            margin.Top = y * 37.5;
-            margin.Left = x * 37.5;
+            margin.Top = y * 30 +7.5;
+            margin.Left = x * 30+7.5;
             el.Margin = margin;
             canvasPlayerField.Children.Add(el);
         }
-        public OnePlayerPage(List<Ship> ships)
+        public OnePlayerPage()
         {
             InitializeComponent();
             checkBoxMusic.IsChecked = GameSettings.GetInstance().BackgroundMusic;
             checkBoxSound.IsChecked = GameSettings.GetInstance().GameplaySounds;
             
 
-            cl.RandomPlaceShip();
-            foreach (var ship in ships)
+            cl.RandomPlaceShip(repo.EnemyShips);
+            foreach (var ship in repo.Ships)
                 foreach (var location in ship.ShipLoc)
                     DisplayShip(location.x, location.y);
 
-            foreach (var s1 in ComputerLogic.enemyShip)
+            foreach (var s1 in repo.EnemyShips)
                 foreach (var s2 in s1.ShipLoc)
                 {
                     Rectangle rc = new Rectangle();
@@ -105,7 +113,11 @@ namespace BattleShip.UI
             var shotStatus = ev.Shot(p);
 
             labelStatus.Content = shotStatus;
-            //cl.ComputerActionFirstShot(ships);
+            var status=cl.ComputerActionFirstShot(repo.Ships);
+            if (status.Item2 == false)
+                DisplayMiss(status.Item1.x,status.Item1.y);
+            if (status.Item2 == true)
+                DisplayShot(status.Item1.x, status.Item1.y);
             
         }
 
