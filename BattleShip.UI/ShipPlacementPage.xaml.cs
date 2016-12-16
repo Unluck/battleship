@@ -15,11 +15,8 @@ namespace BattleShip.UI
     /// </summary>
     public partial class ShipPlacementPage : Page
     {
-        List<Location> clicks = new List<Location>();
-        List<Location> clicksExtended = new List<Location>();
-        public List<Ship> ships = new List<Ship>();
-        int[,] field = new int[12, 12];
-        int[] cells = new int[4] { 4, 3, 2, 1 };
+        ShipPlacement shipPlacement = new ShipPlacement();
+        Repository repo = Repository.GetInstance();
 
         public ShipPlacementPage()
         {
@@ -27,8 +24,8 @@ namespace BattleShip.UI
             checkBoxMusic.IsChecked = GameSettings.GetInstance().BackgroundMusic;
             checkBoxSound.IsChecked = GameSettings.GetInstance().GameplaySounds;
             textBoxUserName.Text = GameSettings.GetInstance().UserName;
-            labelHint.Content = "Hint: Place one ship of any type\nby clicking on cells.";
-            labelShips.Content = string.Format("4 cells: {0}\n3 cells: {1}\n2 cells: {2}\n1 cell: {3}", cells[3], cells[2], cells[1], cells[0]);
+            labelHint.Content = repo.LabelContent[0];
+            labelShips.Content = string.Format("4 cells: {0}\n3 cells: {1}\n2 cells: {2}\n1 cell: {3}", repo.Cells[3], repo.Cells[2], repo.Cells[1], repo.Cells[0]);
         }
 
         private void canvasField_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -40,52 +37,10 @@ namespace BattleShip.UI
             Rectangle rc = new Rectangle();
             SolidColorBrush scb = new SolidColorBrush();
 
-            if (ships.Count != 0)
-                foreach (var ship in ships)
-                    foreach (var location in ship.ShipLoc)
-                        if (location.x == x && location.y == y)
-                        {
-                            labelHint.Content = "Hint: Cell already exists.";
-                            return;
-                        }
-
-            foreach (var click in clicks)
-                if (click.x == x && click.y == y)
-                {
-                    labelHint.Content = "Hint: Cell already exists.";
-                    return;
-                }
-
-            if (field[x + 1, y + 1] == 4)
+            int result = shipPlacement.CheckPosition(x, y);
+            if (result != 5)
             {
-                labelHint.Content = "Hint: You cannot place ship near\nexisting one.";
-                return;
-            }
-
-            if (clicks.Count >= 2)
-            {
-                if (field[clicks[1].x, clicks[1].y] == 1 && clicks[1].y != y)
-                {
-                    labelHint.Content = "Hint: Cells of one ship must be\nnear each other as single line.\nUse \"Add ship\" to place current\nship firstly.";
-                    return;
-                }
-
-                if (field[clicks[1].x, clicks[1].y] == 2 && clicks[1].x != x)
-                {
-                    labelHint.Content = "Hint: Cells of one ship must be\nnear each other as single line.\nUse \"Add ship\" to place current\nship firstly.";
-                    return;
-                }
-            }
-
-            if (clicks.Count != 0 && field[x + 1, y + 1] != 1 && field[x + 1, y + 1] != 2)
-            {
-                labelHint.Content = "Hint: Cells of one ship must be\nnear each other as single line.\nUse \"Add ship\" to place current\nship firstly.";
-                return;
-            }
-
-            if (clicks.Count == 4)
-            {
-                labelHint.Content = "Hint: Maximum size of a ship is 4 cells.\nUse \"Add ship\" to place current ship firstly.";
+                labelHint.Content = repo.LabelContent[result];
                 return;
             }
 
@@ -98,121 +53,55 @@ namespace BattleShip.UI
             margin.Left = p.x * 30;
             rc.Margin = margin;
             canvasField.Children.Add(rc);
-            fieldPlacement(x, y);
-            clicks.Add(p);
-            clicksExtended.Add(p);
-            labelHint.Content = "Hint: Cell added.";
+            shipPlacement.FieldPlacement(x, y);
+            repo.Clicks.Add(p);
+            repo.ClicksExtended.Add(p);
+            labelHint.Content = repo.LabelContent[5];
         }
 
         private void buttonPlace_Click(object sender, RoutedEventArgs e)
         {
-            var location = new Location[clicks.Count];
-
-            if (clicks.Count == 0)
+            var count = repo.ClicksExtended.Count;
+            var result = shipPlacement.PlaceShip();
+            if (result != 8)
             {
-                labelHint.Content = "Hint: Place ship firstly.";
-                return;
-            }
+                labelHint.Content = repo.LabelContent[result];
 
-            if (cells[clicks.Count - 1] == 0)
-            {
-                int count = clicksExtended.Count;
-                labelHint.Content = "Hint: You do not have any\nships of this type left.";
-                for (int i = count; i > count - clicks.Count; i--)
+                if (result == 5)
                 {
-                    canvasField.Children.RemoveAt(i - 1);
-                    clicksExtended.RemoveAt(i - 1);
+                    for (int i = count; i > count - repo.Clicks.Count; i--)
+                    {
+                        canvasField.Children.RemoveAt(i - 1);
+                        repo.ClicksExtended.RemoveAt(i - 1);
+                    }
+
+                    repo.Clicks.Clear();
                 }
 
-                clicks.Clear();
-                for (int i = 0; i < 12; i++)
-                    for (int j = 0; j < 12; j++)
-                        if (field[i, j] != 4)
-                            field[i, j] = 0;
                 return;
             }
 
-            for (int i = 0; i < clicks.Count; i++)
-            {
-                location[i] = clicks[i];
-                shipPlaced(location[i]);
-            }
-
-            ships.Add(new Ship(clicks.Count, 0, location));
-            cells[clicks.Count - 1] -= 1;
-
-            clicks.Clear();
-            labelHint.Content = "Hint: Ship added.";
-            labelShips.Content = string.Format("4 cells: {0}\n3 cells: {1}\n2 cells: {2}\n1 cell: {3}", cells[3], cells[2], cells[1], cells[0]);
+            labelHint.Content = repo.LabelContent[8];
+            labelShips.Content = string.Format("4 cells: {0}\n3 cells: {1}\n2 cells: {2}\n1 cell: {3}", repo.Cells[3], repo.Cells[2], repo.Cells[1], repo.Cells[0]);
         }
 
         private void buttonStart_Click(object sender, RoutedEventArgs e)
         {
-            for (int i = 0; i < 4; i++)
-                if (cells[i] != 0)
-                {
-                    labelHint.Content = "Hint: Place all ships firstly.";
-                    return;
-                }
+            if(shipPlacement.StartGame() == false)
+            {
+                labelHint.Content = repo.LabelContent[9];
+                return;
+            }
 
             GameSettings.GetInstance().UserName = textBoxUserName.Text;
-
-            OnePlayerPage onePlayerPage = new OnePlayerPage(ships);
+            OnePlayerPage onePlayerPage = new OnePlayerPage(repo.Ships);
             NavigationService.Navigate(onePlayerPage);
         }
 
         private void buttonClear_Click(object sender, RoutedEventArgs e)
         {
-            for (int i = 0; i < 12; i++)
-                for (int j = 0; j < 12; j++)
-                    field[i, j] = 0;
-
-            cells = new int[4] { 4, 3, 2, 1 };
+            shipPlacement.Clear();
             canvasField.Children.Clear();
-            clicks.Clear();
-            clicksExtended.Clear();
-            ships.Clear();
-        }
-
-        public void fieldPlacement(int x, int y)
-        {
-            x = x + 1;
-            y = y + 1;
-
-            if (field[x - 1, y - 1] != 3 && field[x - 1, y - 1] != 4)
-                field[x - 1, y - 1] = 3;
-            if (field[x - 1, y] != 3 && field[x - 1, y] != 4)
-                field[x - 1, y] = 1;
-            if (field[x - 1, y + 1] != 3 && field[x - 1, y + 1] != 4)
-                field[x - 1, y + 1] = 3;
-            if (field[x, y - 1] != 3 && field[x, y - 1] != 4)
-                field[x, y - 1] = 2;
-            if (field[x, y] != 3 && field[x, y] != 4)
-                field[x, y] = 5;
-            if (field[x, y + 1] != 3 && field[x, y + 1] != 4)
-                field[x, y + 1] = 2;
-            if (field[x + 1, y - 1] != 3 && field[x + 1, y - 1] != 4)
-                field[x + 1, y - 1] = 3;
-            if (field[x + 1, y] != 3 && field[x + 1, y] != 4)
-                field[x + 1, y] = 1;
-            if (field[x + 1, y + 1] != 3 && field[x + 1, y + 1] != 4)
-                field[x + 1, y + 1] = 3;
-        }
-
-        public void shipPlaced(Location location)
-        {
-            int x = location.x + 1;
-            int y = location.y + 1;
-
-            field[x - 1, y - 1] = 4;
-            field[x - 1, y] = 4;
-            field[x - 1, y + 1] = 4;
-            field[x, y - 1] = 4;
-            field[x, y] = 4;
-            field[x, y + 1] = 4;
-            field[x + 1, y - 1] = 4;
-            field[x + 1, y] = 4;
-            field[x + 1, y + 1] = 4;
         }
 
         private void buttonBack_Click(object sender, RoutedEventArgs e)
