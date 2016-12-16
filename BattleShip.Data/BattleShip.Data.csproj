@@ -42,7 +42,6 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Field.cs" />
     <Compile Include="Leaderboard.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="MusicSettings.cs" />
