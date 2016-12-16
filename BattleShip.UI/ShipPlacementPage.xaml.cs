@@ -67,7 +67,7 @@ namespace BattleShip.UI
             {
                 labelHint.Content = repo.LabelContent[result];
 
-                if (result == 5)
+                if (result == 7)
                 {
                     for (int i = count; i > count - repo.Clicks.Count; i--)
                     {
@@ -94,7 +94,7 @@ namespace BattleShip.UI
             }
 
             GameSettings.GetInstance().UserName = textBoxUserName.Text;
-            OnePlayerPage onePlayerPage = new OnePlayerPage(repo.Ships);
+            OnePlayerPage onePlayerPage = new OnePlayerPage();
             NavigationService.Navigate(onePlayerPage);
         }
 

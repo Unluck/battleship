@@ -14,6 +14,7 @@ namespace BattleShip.UI
     /// </summary>
     public partial class OnePlayerPage : Page
     {
+        Repository repo = Repository.GetInstance();
         List<Ship> ranShip = new List<Ship>();
         ComputerLogic cl = new ComputerLogic();
         private void DisplayShip(int x, int y)
@@ -66,7 +67,7 @@ namespace BattleShip.UI
             el.Margin = margin;
             canvasPlayerField.Children.Add(el);
         }
-        public OnePlayerPage(List<Ship> ships)
+        public OnePlayerPage()
         {
             InitializeComponent();
             checkBoxMusic.IsChecked = GameSettings.GetInstance().BackgroundMusic;
@@ -74,7 +75,7 @@ namespace BattleShip.UI
             
 
             cl.RandomPlaceShip();
-            foreach (var ship in ships)
+            foreach (var ship in repo.Ships)
                 foreach (var location in ship.ShipLoc)
                     DisplayShip(location.x, location.y);
 
