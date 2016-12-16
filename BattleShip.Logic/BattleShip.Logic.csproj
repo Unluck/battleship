@@ -42,10 +42,13 @@
   <ItemGroup>
     <Compile Include="ComputerLogic.cs" />
     <Compile Include="Events.cs" />
-    <Compile Include="Field.cs" />
-    <Compile Include="Location.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Ship.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BattleShip.Data\BattleShip.Data.csproj">
+      <Project>{CFDE3C68-A6FF-415F-A941-F7BD44C1FCFC}</Project>
+      <Name>BattleShip.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
