@@ -1,4 +1,6 @@
-﻿namespace BattleShip.Logic
+﻿using BattleShip.Data;
+
+namespace BattleShip.Logic
 {
     public class Events
     {

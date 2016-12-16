@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BattleShip.Data;
+using System;
 using System.Collections.Generic;
 
 namespace BattleShip.Logic
