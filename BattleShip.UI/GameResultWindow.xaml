@@ -21,7 +21,7 @@
         </Button>
         <Button x:Name="buttonShowShips" Content="SHOW ENEMY&#xA;      SHIPS" HorizontalAlignment="Left" Margin="238,249,0,0" VerticalAlignment="Top" Width="150" Height="50" BorderBrush="{x:Null}" FontFamily="Verdana" FontWeight="Bold" Template="{DynamicResource ButtonControlTemplate1}" Foreground="White" FontSize="16" Visibility="Hidden" Click="buttonShowShips_Click">
             <Button.Background>
-                <ImageBrush ImageSource="ButtonBG.png"/>
+                <ImageBrush ImageSource="/BattleShip.Data;component/Images/ButtonBG.png"/>
             </Button.Background>
         </Button>
     </Grid>
