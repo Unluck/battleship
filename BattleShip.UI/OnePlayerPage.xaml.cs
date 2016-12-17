@@ -118,7 +118,6 @@ namespace BattleShip.UI
             Events ev = new Events();
             var shotStatus = ev.Shot(p,repo.EnemyShips);
 
-            labelStatus.Content = shotStatus;
             var status=cl.ComputerActionFirstShot();
             for (int i = 0; i < status.GetLength(0); i++)
             {

@@ -17,7 +17,7 @@
                 <ImageBrush ImageSource="/BattleShip.Data;component/Images/ButtonBG.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="buttonLeaderboard" Content="LEADERBOARD" HorizontalAlignment="Left" Margin="305,300,0,0" VerticalAlignment="Top" Width="350" Height="100" BorderBrush="{x:Null}" Foreground="White" Template="{DynamicResource ButtonControlTemplate1}" FontFamily="Verdana" FontSize="36" FontWeight="Bold">
+        <Button x:Name="buttonLeaderboard" Content="LEADERBOARD" HorizontalAlignment="Left" Margin="305,300,0,0" VerticalAlignment="Top" Width="350" Height="100" BorderBrush="{x:Null}" Foreground="White" Template="{DynamicResource ButtonControlTemplate1}" FontFamily="Verdana" FontSize="36" FontWeight="Bold" Click="buttonLeaderboard_Click">
             <Button.Background>
                 <ImageBrush ImageSource="/BattleShip.Data;component/Images/ButtonBG.png"/>
             </Button.Background>
