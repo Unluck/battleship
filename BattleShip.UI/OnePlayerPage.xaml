@@ -14,16 +14,26 @@
         </Grid.Background>
         <CheckBox x:Name="checkBoxMusic" Content="Background Music" HorizontalAlignment="Left" Margin="820,30,0,0" VerticalAlignment="Top" FontWeight="Bold" Click="checkBoxMusic_Click"/>
         <CheckBox x:Name="checkBoxSound" Content="Gameplay Sounds" HorizontalAlignment="Left" Margin="820,10,0,0" VerticalAlignment="Top" FontWeight="Bold" Click="checkBoxSound_Click"/>
-        <Canvas x:Name="canvasPlayerField" HorizontalAlignment="Left" Height="300" Margin="45,90,0,0" VerticalAlignment="Top" Width="300">
+        <Canvas x:Name="canvasPlayerField" HorizontalAlignment="Left" Height="300" Margin="45,125,0,0" VerticalAlignment="Top" Width="300">
             <Canvas.Background>
                 <ImageBrush ImageSource="/BattleShip.Data;component/Images/FieldBG.png"/>
             </Canvas.Background>
         </Canvas>
-        <Canvas x:Name="canvasEnemyField" HorizontalAlignment="Left" Height="300" Margin="439,90,0,0" VerticalAlignment="Top" Width="300" MouseLeftButtonDown="canvasEnemyField_MouseLeftButtonDown">
+        <Canvas x:Name="canvasEnemyField" HorizontalAlignment="Left" Height="300" Margin="439,125,0,0" VerticalAlignment="Top" Width="300" MouseLeftButtonDown="canvasEnemyField_MouseLeftButtonDown">
             <Canvas.Background>
                 <ImageBrush ImageSource="/BattleShip.Data;component/Images/FieldBG.png"/>
             </Canvas.Background>
         </Canvas>
-        <Label x:Name="labelShips" Content="Ships:" HorizontalAlignment="Left" Margin="789,90,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Background="{DynamicResource {x:Static SystemColors.InactiveCaptionBrushKey}}"/>
+        <Button x:Name="buttonMainMenu" Content="MAIN MENU" HorizontalAlignment="Left" Margin="776,320,0,0" VerticalAlignment="Top" Width="150" Height="50" FontFamily="Verdana" FontSize="20" FontWeight="Bold" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}" Foreground="White" Click="buttonMainMenu_Click" Visibility="Hidden">
+            <Button.Background>
+                <ImageBrush ImageSource="/BattleShip.Data;component/Images/ButtonBG.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="buttonQuit" Content="QUIT GAME" HorizontalAlignment="Left" Margin="776,375,0,0" VerticalAlignment="Top" Width="150" Height="50" BorderBrush="{x:Null}" FontFamily="Verdana" FontSize="20" FontWeight="Bold" Template="{DynamicResource ButtonControlTemplate1}" Foreground="White" Click="buttonQuit_Click" Visibility="Hidden">
+            <Button.Background>
+                <ImageBrush ImageSource="/BattleShip.Data;component/Images/ButtonBG.png"/>
+            </Button.Background>
+        </Button>
+        <Label x:Name="labelShips" Content="Ships:" HorizontalAlignment="Left" Margin="789,125,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Background="{DynamicResource {x:Static SystemColors.InactiveCaptionBrushKey}}"/>
     </Grid>
 </Page>
