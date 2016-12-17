@@ -117,9 +117,21 @@ namespace BattleShip.UI
             Location p = new Location(x, y);
             Events ev = new Events();
             var shotStatus = ev.Shot(p,repo.EnemyShips);
-
             labelStatus.Content = shotStatus;
-            var status=cl.ComputerActionFirstShot();
+
+            int[,] status=null;
+            int ch = 0;
+            foreach (var s in repo.Ships)
+            {
+                if(s.Hits>0)
+                {
+                    status = cl.FinishedOffShip(s);
+                    ch++;
+                }
+                if (ch > 0) goto next;
+            }
+            status=cl.ComputerActionFirstShot();
+            next:
             for (int i = 0; i < status.GetLength(0); i++)
             {
                 for (int j = 0; j < status.GetLength(1); j++)
