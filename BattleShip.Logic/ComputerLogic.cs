@@ -336,6 +336,7 @@ namespace BattleShip.Logic
 
         private Tuple<Events.shotStatus,Location> AutoChecking(int pos, int x, int y, List<Ship> list,int numShot)
         {
+            Random r = new Random();
             start:
             if(pos==0)
             {
@@ -343,8 +344,16 @@ namespace BattleShip.Logic
                 if (loc.x > 9)
                 {
                     pos = 1;
-                    x = x - numShot;
+                    x = x - numShot+2;
                     goto start;
+                }
+                if (massShips[x + 1, y] == 2)
+                {
+                    if (numShot == 2)
+                    {
+                        pos = r.Next(0, 4);
+                        goto start;
+                    }
                 }
                 return Tuple.Create(ev.Shot(loc, list), new Location(x + 1, y));
             }
@@ -354,8 +363,16 @@ namespace BattleShip.Logic
                 if (loc.x < 0)
                 {
                     pos = 0;
-                    x = x + numShot;
+                    x = x + numShot-2;
                     goto start;
+                }
+                if (massShips[x - 1, y] == 2)
+                {
+                    if (numShot == 2)
+                    {
+                        pos = r.Next(0,4);
+                        goto start;
+                    }
                 }
                 return Tuple.Create(ev.Shot(loc, list), new Location(x-1,y));
             }
@@ -365,8 +382,16 @@ namespace BattleShip.Logic
                 if (loc.y > 9)
                 {
                     pos = 3;
-                    y = y - numShot;
+                    y = y - numShot+2;
                     goto start;
+                }
+                if (massShips[x, y + 1] == 2)
+                {
+                    if (numShot == 2)
+                    {
+                        pos = r.Next(0, 4);
+                        goto start;
+                    }
                 }
                 return Tuple.Create(ev.Shot(loc, list), new Location(x, y+1));
             }
@@ -376,8 +401,16 @@ namespace BattleShip.Logic
                 if (loc.y < 0)
                 {
                     pos = 2;
-                    y = y + numShot;
+                    y = y + numShot-2;
                     goto start;
+                }
+                if (massShips[x, y - 1] == 2)
+                {
+                    if (numShot == 2)
+                    {
+                        pos = r.Next(0, 4);
+                        goto start;
+                    }
                 }
                 return Tuple.Create(ev.Shot(loc, list), new Location(x, y-1));
             }
@@ -418,6 +451,7 @@ namespace BattleShip.Logic
 
         public int[,] FinishedOffShip(Ship ship)
         {
+            Random r = new Random();
             int num = ship.Hits;
             int shot = ship.Lifes - num;
             Location[] loc= new Location[ship.Lifes];
@@ -435,6 +469,81 @@ namespace BattleShip.Logic
                 }
                 ShowUnplayableDots(loc, massShips);
                 return massShips;
+            }
+            else
+            {
+                Location dot=new Location(0,0);
+                int randomPos = r.Next(0, 4);
+                for (int i = 0; i < ship.Lifes; i++)
+                {
+                    if(massShips[ship.ShipLoc[i].x,ship.ShipLoc[i].y]==3)
+                    {
+                        dot.x = ship.ShipLoc[i].x;
+                        dot.y = ship.ShipLoc[i].y;
+                    }
+                }
+                var status = AutoChecking(randomPos, dot.x, dot.y, repo.Ships , 2);
+                if (status.Item1 == Events.shotStatus.miss)
+                {
+                    massShips[status.Item2.x, status.Item2.y] = 2;
+                    return massShips;
+                }
+                if (status.Item1 == Events.shotStatus.kill)
+                {
+                    massShips[status.Item2.x, status.Item2.y] = 3;
+                    var massLoc = new Location[]
+                    {
+                        new Location(dot.x,dot.y),
+                        new Location(status.Item2.x, status.Item2.y)
+                    };
+                    ShowUnplayableDots(massLoc, massShips);
+                    return ComputerActionFirstShot();
+                }
+                if (status.Item1 == Events.shotStatus.hit)
+                {
+                    massShips[status.Item2.x, status.Item2.y] = 3;
+                    var statusSecond = AutoChecking(randomPos, status.Item2.x, status.Item2.y, repo.Ships, 3);
+                    if (statusSecond.Item1 == Events.shotStatus.miss)
+                    {
+                        massShips[statusSecond.Item2.x, statusSecond.Item2.y] = 2;
+                        return massShips;
+                    }
+                    if (statusSecond.Item1 == Events.shotStatus.kill)
+                    {
+                        massShips[statusSecond.Item2.x, statusSecond.Item2.y] = 3;
+                        var massLoc = new Location[]
+                         {
+                            new Location(dot.x,dot.y),
+                            new Location(status.Item2.x, status.Item2.y),
+                            new Location(statusSecond.Item2.x, statusSecond.Item2.y)
+                         };
+                        ShowUnplayableDots(massLoc, massShips);
+                        return ComputerActionFirstShot();
+                    }
+                    if (statusSecond.Item1 == Events.shotStatus.hit)
+                    {
+                        massShips[statusSecond.Item2.x, statusSecond.Item2.y] = 3;
+                        var statusThird = AutoChecking(randomPos, statusSecond.Item2.x, statusSecond.Item2.y, repo.Ships, 4);
+                        if (statusThird.Item1 == Events.shotStatus.miss)
+                        {
+                            massShips[statusThird.Item2.x, statusThird.Item2.y] = 2;
+                            return massShips;
+                        }
+                        if (statusThird.Item1 == Events.shotStatus.kill)
+                        {
+                            massShips[statusThird.Item2.x, statusThird.Item2.y] = 3;
+                            var massLoc = new Location[]
+                             {
+                                 new Location(dot.x,dot.y),
+                                 new Location(status.Item2.x, status.Item2.y),
+                                 new Location(statusSecond.Item2.x, statusSecond.Item2.y),
+                                 new Location(statusThird.Item2.x, statusThird.Item2.y)
+                             };
+                            ShowUnplayableDots(massLoc, massShips);
+                            return ComputerActionFirstShot();
+                        }
+                    }
+                }
             }
             return massShips;
         }

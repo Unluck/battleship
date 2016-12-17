@@ -53,17 +53,7 @@ namespace BattleShip.UI
                 ln.StrokeThickness = 2;
                 canvasPlayerField.Children.Add(ln);
             }
-            
-            /*Line ln = new Line();
-            ln.Stroke = System.Windows.Media.Brushes.Black;
-            ln.X1 = x * 30;
-            ln.X2 = x * 30 + 30;
-            ln.Y1 = y * 30;
-            ln.Y2 = y * 30 + 30;
-            ln.HorizontalAlignment = HorizontalAlignment.Right;
-            ln.StrokeThickness = 2;
-            canvasPlayerField.Children.Add(ln);*/
-
+           
         }
         public void DisplayMiss(int x,int y)
         {
