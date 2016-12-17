@@ -24,6 +24,10 @@ namespace BattleShip.UI
             NavigationService.Navigate(modeSelectionPage);
         }
 
+        private void buttonLeaderboard_Click(object sender, RoutedEventArgs e)
+        {
+        }
+
         #region Settings
         private void checkBoxSound_Click(object sender, RoutedEventArgs e)
         {
