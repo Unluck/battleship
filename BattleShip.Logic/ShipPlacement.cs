@@ -8,6 +8,9 @@ namespace BattleShip.Logic
 
         public int CheckPosition(int x, int y)
         {
+            if (StartGame() == true)
+                return 13;
+
             if (repo.Ships.Count != 0)
                 foreach (var ship in repo.Ships)
                     foreach (var location in ship.ShipLoc)
