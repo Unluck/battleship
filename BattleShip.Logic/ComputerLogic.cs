@@ -240,7 +240,7 @@ namespace BattleShip.Logic
             restart:
             int shotNumber=0;
             Random r = new Random();
-            int x = r.Next(0, 10); ;
+            int x = r.Next(0, 10);
             int y = r.Next(0, 10);
             while (massShips[x, y] == 2 | massShips[x,y]==3)
             {
@@ -384,9 +384,9 @@ namespace BattleShip.Logic
             return Tuple.Create(Events.shotStatus.miss, new Location(0,0));
         }
 
-        private void ShowUnplayableDots(Location[] locMass, int[,] mass)
+        private void ShowUnplayableDots(Location[] listLoc, int[,] mass)
         {
-            foreach (var s in locMass)
+            foreach (var s in listLoc)
             {
 
                 if (s.x - 1 >= 0 & s.y - 1 >= 0 & s.x - 1 < 10 & s.y - 1 < 10)
@@ -414,6 +414,29 @@ namespace BattleShip.Logic
                     if (mass[s.x + 1, s.y + 1] != 3)
                         mass[s.x + 1, s.y + 1] = 2;
             } 
+        }
+
+        public int[,] FinishedOffShip(Ship ship)
+        {
+            int num = ship.Hits;
+            int shot = ship.Lifes - num;
+            Location[] loc= new Location[ship.Lifes];
+            if(num>1)
+            {
+                
+                for (int i = 0; i < ship.Lifes; i++)
+                {
+                    loc[i] = new Location(ship.ShipLoc[i].x, ship.ShipLoc[i].y);
+                    if (massShips[ship.ShipLoc[i].x, ship.ShipLoc[i].y] == 1)
+                    {
+                        ev.Shot(new Location(ship.ShipLoc[i].x, ship.ShipLoc[i].y), repo.Ships);
+                        massShips[ship.ShipLoc[i].x, ship.ShipLoc[i].y] = 3;
+                    }
+                }
+                ShowUnplayableDots(loc, massShips);
+                return massShips;
+            }
+            return massShips;
         }
     }
 }

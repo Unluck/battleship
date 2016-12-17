@@ -21,7 +21,11 @@ namespace BattleShip.Logic
                     if (s2.x == loc.x && s2.y==loc.y)
                     {
                         s1.Hits++;
-                        if (s1.Hits == s1.Lifes) return shotStatus.kill;
+                        if (s1.Hits == s1.Lifes)
+                        {
+                            listSh.Remove(s1);
+                            return shotStatus.kill;
+                        }
                         else return shotStatus.hit;
                     }
                 }
