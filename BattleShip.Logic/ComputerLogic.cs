@@ -266,7 +266,7 @@ namespace BattleShip.Logic
                 shotNumber++;
                 massShips[x, y] = 3;
                 int randomPos = r.Next(0, 4);
-                var statusSecond=AutoChecking(randomPos, x, y, repo.Ships,shotNumber);
+                var statusSecond=AutoChecking(ref randomPos, x, y, repo.Ships,shotNumber);
                 if(statusSecond.Item1==Events.shotStatus.miss)
                 {
                     massShips[statusSecond.Item2.x, statusSecond.Item2.y] = 2;
@@ -287,7 +287,7 @@ namespace BattleShip.Logic
                 {
                     shotNumber++;
                     massShips[statusSecond.Item2.x, statusSecond.Item2.y] = 3;
-                    var statusThird = AutoChecking(randomPos, statusSecond.Item2.x, statusSecond.Item2.y, repo.Ships,shotNumber);
+                    var statusThird = AutoChecking(ref randomPos, statusSecond.Item2.x, statusSecond.Item2.y, repo.Ships,shotNumber);
                     if(statusThird.Item1==Events.shotStatus.miss)
                     {
                         massShips[statusThird.Item2.x, statusThird.Item2.y] = 2;
@@ -309,7 +309,7 @@ namespace BattleShip.Logic
                     {
                         shotNumber++;
                         massShips[statusThird.Item2.x, statusThird.Item2.y] = 3;
-                        var statusFourth = AutoChecking(randomPos, statusThird.Item2.x, statusThird.Item2.y, repo.Ships, shotNumber);
+                        var statusFourth = AutoChecking(ref randomPos, statusThird.Item2.x, statusThird.Item2.y, repo.Ships, shotNumber);
                         if (statusFourth.Item1 == Events.shotStatus.miss)
                         {
                             massShips[statusFourth.Item2.x, statusFourth.Item2.y] = 2;
@@ -334,7 +334,7 @@ namespace BattleShip.Logic
             return massShips;
         }
 
-        private Tuple<Events.shotStatus,Location> AutoChecking(int pos, int x, int y, List<Ship> list,int numShot)
+        private Tuple<Events.shotStatus,Location> AutoChecking(ref int pos, int x, int y, List<Ship> list,int numShot)
         {
             Random r = new Random();
             start:
@@ -352,6 +352,12 @@ namespace BattleShip.Logic
                     if (numShot == 2)
                     {
                         pos = r.Next(0, 4);
+                        goto start;
+                    }
+                    if(numShot>2)
+                    {
+                        pos = 1;
+                        x = x - numShot + 2;
                         goto start;
                     }
                 }
@@ -373,6 +379,12 @@ namespace BattleShip.Logic
                         pos = r.Next(0,4);
                         goto start;
                     }
+                    if (numShot > 2)
+                    {
+                        pos = 0;
+                        x = x + numShot - 2;
+                        goto start;
+                    }
                 }
                 return Tuple.Create(ev.Shot(loc, list), new Location(x-1,y));
             }
@@ -392,6 +404,12 @@ namespace BattleShip.Logic
                         pos = r.Next(0, 4);
                         goto start;
                     }
+                    if (numShot > 2)
+                    {
+                        pos = 3;
+                        y = y - numShot + 2;
+                        goto start;
+                    }
                 }
                 return Tuple.Create(ev.Shot(loc, list), new Location(x, y+1));
             }
@@ -409,6 +427,12 @@ namespace BattleShip.Logic
                     if (numShot == 2)
                     {
                         pos = r.Next(0, 4);
+                        goto start;
+                    }
+                    if (numShot > 2)
+                    {
+                        pos = 2;
+                        y = y + numShot - 2;
                         goto start;
                     }
                 }
@@ -482,7 +506,7 @@ namespace BattleShip.Logic
                         dot.y = ship.ShipLoc[i].y;
                     }
                 }
-                var status = AutoChecking(randomPos, dot.x, dot.y, repo.Ships , 2);
+                var status = AutoChecking(ref randomPos, dot.x, dot.y, repo.Ships , 2);
                 if (status.Item1 == Events.shotStatus.miss)
                 {
                     massShips[status.Item2.x, status.Item2.y] = 2;
@@ -502,7 +526,7 @@ namespace BattleShip.Logic
                 if (status.Item1 == Events.shotStatus.hit)
                 {
                     massShips[status.Item2.x, status.Item2.y] = 3;
-                    var statusSecond = AutoChecking(randomPos, status.Item2.x, status.Item2.y, repo.Ships, 3);
+                    var statusSecond = AutoChecking(ref randomPos, status.Item2.x, status.Item2.y, repo.Ships, 3);
                     if (statusSecond.Item1 == Events.shotStatus.miss)
                     {
                         massShips[statusSecond.Item2.x, statusSecond.Item2.y] = 2;
@@ -523,7 +547,7 @@ namespace BattleShip.Logic
                     if (statusSecond.Item1 == Events.shotStatus.hit)
                     {
                         massShips[statusSecond.Item2.x, statusSecond.Item2.y] = 3;
-                        var statusThird = AutoChecking(randomPos, statusSecond.Item2.x, statusSecond.Item2.y, repo.Ships, 4);
+                        var statusThird = AutoChecking(ref randomPos, statusSecond.Item2.x, statusSecond.Item2.y, repo.Ships, 4);
                         if (statusThird.Item1 == Events.shotStatus.miss)
                         {
                             massShips[statusThird.Item2.x, statusThird.Item2.y] = 2;

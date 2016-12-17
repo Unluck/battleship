@@ -51,7 +51,6 @@ namespace BattleShip.UI
                     ln.Y1 = y * 30;
                     ln.Y2 = y * 30 + 30;
                 }
-                //ln.HorizontalAlignment = HorizontalAlignment.Left;
                 if (i == 1)
                 {
                     ln.X1 = x * 30 + 30;
@@ -59,21 +58,9 @@ namespace BattleShip.UI
                     ln.Y1 = y * 30;
                     ln.Y2 = y * 30 + 30;
                 }
-                //ln.HorizontalAlignment = HorizontalAlignment.Right;
                 ln.StrokeThickness = 2;
                 canvas.Children.Add(ln);
             }
-            
-            /*Line ln = new Line();
-            ln.Stroke = System.Windows.Media.Brushes.Black;
-            ln.X1 = x * 30;
-            ln.X2 = x * 30 + 30;
-            ln.Y1 = y * 30;
-            ln.Y2 = y * 30 + 30;
-            ln.HorizontalAlignment = HorizontalAlignment.Right;
-            ln.StrokeThickness = 2;
-            canvasPlayerField.Children.Add(ln);*/
-
         }
 
         public void DisplayMiss(Canvas canvas, int x, int y)
@@ -104,21 +91,7 @@ namespace BattleShip.UI
                     DisplayShip(canvasPlayerField, location.x, location.y);
             cl.UserShip();
 
-            foreach (var s1 in repo.EnemyShips)
-                foreach (var s2 in s1.ShipLoc)
-                {
-                    Rectangle rc = new Rectangle();
-                    SolidColorBrush scb = new SolidColorBrush();
-                    scb.Color = Color.FromRgb(255, 000, 255);
-                    rc.Fill = scb;
-                    rc.Width = 30;
-                    rc.Height = 30;
-                    Thickness margin = rc.Margin;
-                    margin.Top = s2.y * 30;
-                    margin.Left = s2.x * 30;
-                    rc.Margin = margin;
-                    canvasEnemyField.Children.Add(rc);
-                }
+           
         }
 
         private void canvasEnemyField_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
