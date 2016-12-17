@@ -102,20 +102,22 @@ namespace BattleShip.UI
             Location p = new Location(x, y);
             Events ev = new Events();
             if (shots[x, y] == 1)
-            {
                 return;
-            }
                    
             var shotStatus = ev.Shot(p, repo.EnemyShips);
             shots[x, y] = 1;
 
             if (shotStatus == Events.shotStatus.hit)
+            {
                 DisplayShot(canvasEnemyField, x, y);
+                return;
+            }
 
             else if (shotStatus == Events.shotStatus.kill)
             {
                 DisplayShot(canvasEnemyField, x, y);
                 UpdateLabelShips();
+                return;
             }
 
             else DisplayMiss(canvasEnemyField, x, y);
