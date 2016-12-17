@@ -37,14 +37,19 @@ namespace BattleShip.UI
             {
                 Line ln = new Line();
                 ln.Stroke = System.Windows.Media.Brushes.Black;
-                ln.X1 = x * 30;
-                ln.X2 = x * 30 + 30;
-                ln.Y1 = y * 30;
-                ln.Y2 = y * 30 + 30;
+                
                 if(i==0)
-                    ln.HorizontalAlignment = HorizontalAlignment.Left;
+                    ln.X1 = x * 30;
+                    ln.X2 = x * 30 + 30;
+                    ln.Y1 = y * 30;
+                    ln.Y2 = y * 30 + 30;
+                    //ln.HorizontalAlignment = HorizontalAlignment.Left;
                 if (i == 1)
-                    ln.HorizontalAlignment = HorizontalAlignment.Right;
+                    ln.X1 = x * 30+30;
+                    ln.X2 = x * 30 ;
+                    ln.Y1 = y * 30;
+                    ln.Y2 = y * 30+30;
+                    //ln.HorizontalAlignment = HorizontalAlignment.Right;
                 ln.StrokeThickness = 2;
                 canvasPlayerField.Children.Add(ln);
             }
@@ -85,6 +90,7 @@ namespace BattleShip.UI
             foreach (var ship in repo.Ships)
                 foreach (var location in ship.ShipLoc)
                     DisplayShip(location.x, location.y);
+            cl.UserShip();
 
             foreach (var s1 in repo.EnemyShips)
                 foreach (var s2 in s1.ShipLoc)
@@ -110,14 +116,18 @@ namespace BattleShip.UI
             int y = (int)(position.Y / (canvasEnemyField.ActualHeight / 10));
             Location p = new Location(x, y);
             Events ev = new Events();
-            var shotStatus = ev.Shot(p);
+            var shotStatus = ev.Shot(p,repo.EnemyShips);
 
             labelStatus.Content = shotStatus;
-            var status=cl.ComputerActionFirstShot(repo.Ships);
-            if (status.Item2 == false)
-                DisplayMiss(status.Item1.x,status.Item1.y);
-            if (status.Item2 == true)
-                DisplayShot(status.Item1.x, status.Item1.y);
+            var status=cl.ComputerActionFirstShot();
+            for (int i = 0; i < status.GetLength(0); i++)
+            {
+                for (int j = 0; j < status.GetLength(1); j++)
+                {
+                    if(status[i,j]==3) DisplayShot(i, j);
+                    if (status[i, j] == 2) DisplayMiss(i, j);
+                }
+            }
             
         }
 
