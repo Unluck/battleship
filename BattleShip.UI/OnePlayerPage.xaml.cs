@@ -20,6 +20,7 @@ namespace BattleShip.UI
         Repository repo = Repository.GetInstance();
         List<Ship> ranShip = new List<Ship>();
         ComputerLogic cl = new ComputerLogic();
+        int[,] shots = new int[10, 10];
 
         private void DisplayShip(Canvas canvas, int x, int y)
         {
@@ -44,16 +45,20 @@ namespace BattleShip.UI
                 ln.Stroke = Brushes.Black;
 
                 if (i == 0)
+                {
                     ln.X1 = x * 30;
-                ln.X2 = x * 30 + 30;
-                ln.Y1 = y * 30;
-                ln.Y2 = y * 30 + 30;
+                    ln.X2 = x * 30 + 30;
+                    ln.Y1 = y * 30;
+                    ln.Y2 = y * 30 + 30;
+                }
                 //ln.HorizontalAlignment = HorizontalAlignment.Left;
                 if (i == 1)
+                {
                     ln.X1 = x * 30 + 30;
-                ln.X2 = x * 30;
-                ln.Y1 = y * 30;
-                ln.Y2 = y * 30 + 30;
+                    ln.X2 = x * 30;
+                    ln.Y1 = y * 30;
+                    ln.Y2 = y * 30 + 30;
+                }
                 //ln.HorizontalAlignment = HorizontalAlignment.Right;
                 ln.StrokeThickness = 2;
                 canvas.Children.Add(ln);
@@ -91,9 +96,9 @@ namespace BattleShip.UI
             InitializeComponent();
             checkBoxMusic.IsChecked = GameSettings.GetInstance().BackgroundMusic;
             checkBoxSound.IsChecked = GameSettings.GetInstance().GameplaySounds;
-
-
             cl.RandomPlaceShip(repo.EnemyShips);
+            UpdateLabelShips();
+
             foreach (var ship in repo.Ships)
                 foreach (var location in ship.ShipLoc)
                     DisplayShip(canvasPlayerField, location.x, location.y);
@@ -123,9 +128,22 @@ namespace BattleShip.UI
             int y = (int)(position.Y / (canvasEnemyField.ActualHeight / 10));
             Location p = new Location(x, y);
             Events ev = new Events();
+            if (shots[x, y] == 1)
+            {
+                return;
+            }
+                   
             var shotStatus = ev.Shot(p, repo.EnemyShips);
-            if (shotStatus == Events.shotStatus.hit || shotStatus == Events.shotStatus.kill)
+            shots[x, y] = 1;
+
+            if (shotStatus == Events.shotStatus.hit)
                 DisplayShot(canvasEnemyField, x, y);
+
+            else if (shotStatus == Events.shotStatus.kill)
+            {
+                DisplayShot(canvasEnemyField, x, y);
+                UpdateLabelShips();
+            }
 
             else DisplayMiss(canvasEnemyField, x, y);
 
@@ -157,6 +175,8 @@ namespace BattleShip.UI
 
                 if (dialogResult == false)
                     NavigationService.Navigate(startingPage);
+
+                return;
             }
 
             if (repo.Ships.Count == 0)
@@ -171,6 +191,17 @@ namespace BattleShip.UI
                         foreach (var location in ship.ShipLoc)
                             DisplayShip(canvasEnemyField, location.x, location.y);
             }
+        }
+
+        public void UpdateLabelShips()
+        {
+            repo.Cells = new int[4] { 0, 0, 0, 0 };
+
+            foreach (var ship in repo.EnemyShips)
+                repo.Cells[ship.Lifes - 1]++;
+
+            labelShips.Content = string.Format("Enemy ships:\n4 cells: {0}\n3 cells: {1}\n2 cells: {2}\n1 cell: {3}",
+                repo.Cells[3], repo.Cells[2], repo.Cells[1], repo.Cells[0]);
         }
 
         #region Settings

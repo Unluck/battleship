@@ -1,8 +1,8 @@
-﻿using System;
+﻿using BattleShip.Logic;
+using System;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 
 namespace BattleShip.UI
 {
@@ -11,6 +11,8 @@ namespace BattleShip.UI
     /// </summary>
     public partial class GameResultWindow : Window
     {
+        ShipPlacement shipPlacement = new ShipPlacement();
+
         public GameResultWindow(bool win)
         {
             InitializeComponent();
@@ -35,6 +37,7 @@ namespace BattleShip.UI
 
         private void buttonMainMenu_Click(object sender, RoutedEventArgs e)
         {
+            shipPlacement.Clear();
             DialogResult = false;
             Close();
         }
