@@ -46,7 +46,7 @@
         </Button>
         <Label x:Name="labelUserName" Content="Enter Your Name:" HorizontalAlignment="Left" Margin="353,25,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
         <TextBox x:Name="textBoxUserName" HorizontalAlignment="Left" Height="22" Margin="483,31,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.308,0.205"/>
-        <Label x:Name="labelHint" Content="Hint:" HorizontalAlignment="Left" Margin="703,90,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="{DynamicResource {x:Static SystemColors.InfoTextBrushKey}}" Background="{DynamicResource {x:Static SystemColors.InactiveCaptionBrushKey}}"/>
+        <Label x:Name="labelHint" Content="Hint:" HorizontalAlignment="Left" Margin="693,90,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="{DynamicResource {x:Static SystemColors.InfoTextBrushKey}}" Background="{DynamicResource {x:Static SystemColors.InactiveCaptionBrushKey}}"/>
         <Label x:Name="labelShips" Content="Ships:" HorizontalAlignment="Left" Margin="88,90,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Background="{DynamicResource {x:Static SystemColors.InactiveCaptionBrushKey}}"/>
     </Grid>
 </Page>

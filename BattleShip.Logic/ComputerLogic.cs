@@ -192,6 +192,10 @@ namespace BattleShip.Logic
                     }
                 }
             }
+
+            for (int i = 0; i < 10; i++)
+                for (int j = 0; j < 10; j++)
+                    localShip[i, j] = 0;
         }
                 
            
@@ -221,7 +225,7 @@ namespace BattleShip.Logic
 
         }
 
-        public Tuple<Location,bool> ComputerActionFirstShot()
+        /*public Tuple<Location,bool> ComputerActionFirstShot()
         {
             Random r = new Random();
             int x = r.Next(0,10);
@@ -256,7 +260,7 @@ namespace BattleShip.Logic
                            
            //return Tuple.Create(new Location(x, y), true);
            //return Tuple.Create(new Location(x,y) ,false);
-        }
+        }*/
 
         private void AutoChecking(int pos, int x, int y, int[,] mass)
         {

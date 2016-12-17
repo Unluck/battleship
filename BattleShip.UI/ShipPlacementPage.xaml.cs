@@ -25,7 +25,7 @@ namespace BattleShip.UI
             checkBoxSound.IsChecked = GameSettings.GetInstance().GameplaySounds;
             textBoxUserName.Text = GameSettings.GetInstance().UserName;
             labelHint.Content = repo.LabelContent[0];
-            labelShips.Content = string.Format("4 cells: {0}\n3 cells: {1}\n2 cells: {2}\n1 cell: {3}", repo.Cells[3], repo.Cells[2], repo.Cells[1], repo.Cells[0]);
+            UpdateLabelShips();
         }
 
         private void canvasField_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -34,8 +34,6 @@ namespace BattleShip.UI
             int x = (int)(position.X / (canvasField.ActualWidth / 10));
             int y = (int)(position.Y / (canvasField.ActualHeight / 10));
             Location p = new Location(x, y);
-            Rectangle rc = new Rectangle();
-            SolidColorBrush scb = new SolidColorBrush();
 
             int result = shipPlacement.CheckPosition(x, y);
             if (result != 5)
@@ -44,15 +42,7 @@ namespace BattleShip.UI
                 return;
             }
 
-            scb.Color = Color.FromRgb(0, 191, 255);
-            rc.Fill = scb;
-            rc.Width = 30;
-            rc.Height = 30;
-            Thickness margin = rc.Margin;
-            margin.Top = p.y * 30;
-            margin.Left = p.x * 30;
-            rc.Margin = margin;
-            canvasField.Children.Add(rc);
+            DrawShip(x, y);
             shipPlacement.FieldPlacement(x, y);
             repo.Clicks.Add(p);
             repo.ClicksExtended.Add(p);
@@ -82,7 +72,7 @@ namespace BattleShip.UI
             }
 
             labelHint.Content = repo.LabelContent[8];
-            labelShips.Content = string.Format("4 cells: {0}\n3 cells: {1}\n2 cells: {2}\n1 cell: {3}", repo.Cells[3], repo.Cells[2], repo.Cells[1], repo.Cells[0]);
+            UpdateLabelShips();
         }
 
         private void buttonStart_Click(object sender, RoutedEventArgs e)
@@ -103,7 +93,7 @@ namespace BattleShip.UI
             shipPlacement.Clear();
             canvasField.Children.Clear();
             labelHint.Content = repo.LabelContent[10];
-            labelShips.Content = string.Format("4 cells: {0}\n3 cells: {1}\n2 cells: {2}\n1 cell: {3}", repo.Cells[3], repo.Cells[2], repo.Cells[1], repo.Cells[0]);
+            UpdateLabelShips();
         }
 
         private void buttonBack_Click(object sender, RoutedEventArgs e)
@@ -114,8 +104,39 @@ namespace BattleShip.UI
 
         private void buttonRandom_Click(object sender, RoutedEventArgs e)
         {
+            if (repo.Ships.Count != 0 || repo.Clicks.Count != 0) 
+            {
+                labelHint.Content = repo.LabelContent[11];
+                return;
+            }
             cl.RandomPlaceShip(repo.Ships);
+            foreach (var ship in repo.Ships)
+                foreach (var location in ship.ShipLoc)
+                    DrawShip(location.x, location.y);
+            labelHint.Content = repo.LabelContent[12];
             repo.Cells = new int[4] { 0, 0, 0, 0 };
+            UpdateLabelShips();
+        }
+
+        private void DrawShip(int x, int y)
+        {
+            Rectangle rc = new Rectangle();
+            SolidColorBrush scb = new SolidColorBrush();
+            scb.Color = Color.FromRgb(0, 191, 255);
+            rc.Fill = scb;
+            rc.Width = 30;
+            rc.Height = 30;
+            Thickness margin = rc.Margin;
+            margin.Top = y * 30;
+            margin.Left = x * 30;
+            rc.Margin = margin;
+            canvasField.Children.Add(rc);
+        }
+
+        public void UpdateLabelShips()
+        {
+            labelShips.Content = string.Format("4 cells: {0}\n3 cells: {1}\n2 cells: {2}\n1 cell: {3}", 
+                repo.Cells[3], repo.Cells[2], repo.Cells[1], repo.Cells[0]);
         }
 
         #region Settings

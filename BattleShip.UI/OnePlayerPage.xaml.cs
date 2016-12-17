@@ -105,7 +105,7 @@ namespace BattleShip.UI
 
         private void canvasEnemyField_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Point position = e.GetPosition(canvasEnemyField);
+            /*Point position = e.GetPosition(canvasEnemyField);
             int x = (int)(position.X / (canvasEnemyField.ActualWidth / 10));
             int y = (int)(position.Y / (canvasEnemyField.ActualHeight / 10));
             Location p = new Location(x, y);
@@ -117,7 +117,7 @@ namespace BattleShip.UI
             if (status.Item2 == false)
                 DisplayMiss(status.Item1.x,status.Item1.y);
             if (status.Item2 == true)
-                DisplayShot(status.Item1.x, status.Item1.y);
+                DisplayShot(status.Item1.x, status.Item1.y);*/
             
         }
 
