@@ -63,7 +63,7 @@ namespace BattleShip.UI
                 ln.StrokeThickness = 2;
                 canvas.Children.Add(ln);
             }
-
+            
             /*Line ln = new Line();
             ln.Stroke = System.Windows.Media.Brushes.Black;
             ln.X1 = x * 30;
