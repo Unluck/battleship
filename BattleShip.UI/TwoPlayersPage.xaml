@@ -12,8 +12,6 @@
         <Grid.Background>
             <ImageBrush ImageSource="/BattleShip.Data;component/Images/PlayingBG.jpg"/>
         </Grid.Background>
-        <CheckBox x:Name="checkBoxMusic" Content="Background Music" HorizontalAlignment="Left" Margin="820,30,0,0" VerticalAlignment="Top" FontWeight="Bold" Click="checkBoxMusic_Click"/>
-        <CheckBox x:Name="checkBoxSound" Content="Gameplay Sounds" HorizontalAlignment="Left" Margin="820,10,0,0" VerticalAlignment="Top" FontWeight="Bold" Click="checkBoxSound_Click"/>
         <Canvas x:Name="canvasPlayerOne" HorizontalAlignment="Left" Height="300" Margin="120,125,0,0" VerticalAlignment="Top" Width="300" MouseLeftButtonDown="canvasPlayerOne_MouseLeftButtonDown">
             <Canvas.Background>
                 <ImageBrush ImageSource="/BattleShip.Data;component/Images/FieldBG.png"/>

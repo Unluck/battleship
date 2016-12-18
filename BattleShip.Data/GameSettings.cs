@@ -23,25 +23,5 @@ namespace BattleShip.Data
                 Settings.Default.Save();
             }
         }
-
-        public bool BackgroundMusic
-        {
-            get { return Settings.Default.BackgroundMusic; }
-            set
-            {
-                Settings.Default.BackgroundMusic = value;
-                Settings.Default.Save();
-            }
-        }
-
-        public bool GameplaySounds
-        {
-            get { return Settings.Default.GameplaySounds; }
-            set
-            {
-                Settings.Default.GameplaySounds = value;
-                Settings.Default.Save();
-            }
-        }
     }
 }

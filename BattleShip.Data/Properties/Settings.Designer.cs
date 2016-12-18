@@ -34,29 +34,5 @@ namespace BattleShip.Data.Properties {
                 this["UserName"] = value;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool BackgroundMusic {
-            get {
-                return ((bool)(this["BackgroundMusic"]));
-            }
-            set {
-                this["BackgroundMusic"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool GameplaySounds {
-            get {
-                return ((bool)(this["GameplaySounds"]));
-            }
-            set {
-                this["GameplaySounds"] = value;
-            }
-        }
     }
 }

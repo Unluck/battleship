@@ -20,17 +20,5 @@ namespace BattleShip.UI
             StartingPage startingPage = new StartingPage();
             NavigationService.Navigate(startingPage);
         }
-
-        #region Settings
-        private void checkBoxSound_Click(object sender, RoutedEventArgs e)
-        {
-            GameSettings.GetInstance().GameplaySounds = checkBoxSound.IsChecked.Value;
-        }
-
-        private void checkBoxMusic_Click(object sender, RoutedEventArgs e)
-        {
-            GameSettings.GetInstance().BackgroundMusic = checkBoxMusic.IsChecked.Value;
-        }
-        #endregion
     }
 }

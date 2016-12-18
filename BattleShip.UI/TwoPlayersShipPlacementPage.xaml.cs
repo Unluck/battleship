@@ -31,8 +31,6 @@ namespace BattleShip.UI
         public TwoPlayersShipPlacementPage(int playercount)
         {
             InitializeComponent();
-            checkBoxMusic.IsChecked = GameSettings.GetInstance().BackgroundMusic;
-            checkBoxSound.IsChecked = GameSettings.GetInstance().GameplaySounds;
 
             if (playercount == 1)
             {
@@ -158,17 +156,5 @@ namespace BattleShip.UI
             labelShips.Content = string.Format("4 cells: {0}\n3 cells: {1}\n2 cells: {2}\n1 cell: {3}",
                 repo.Cells[3], repo.Cells[2], repo.Cells[1], repo.Cells[0]);
         }
-
-        #region Settings
-        private void checkBoxSound_Click(object sender, RoutedEventArgs e)
-        {
-            GameSettings.GetInstance().GameplaySounds = checkBoxSound.IsChecked.Value;
-        }
-
-        private void checkBoxMusic_Click(object sender, RoutedEventArgs e)
-        {
-            GameSettings.GetInstance().BackgroundMusic = checkBoxMusic.IsChecked.Value;
-        }
-        #endregion
     }
 }

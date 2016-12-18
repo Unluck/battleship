@@ -28,8 +28,6 @@ namespace BattleShip.UI
         public TwoPlayersPage()
         {
             InitializeComponent();
-            checkBoxMusic.IsChecked = GameSettings.GetInstance().BackgroundMusic;
-            checkBoxSound.IsChecked = GameSettings.GetInstance().GameplaySounds;
             labelHint.Content = "Player 1 turn to shoot. Click on enemy field";
         }
 
@@ -216,18 +214,5 @@ namespace BattleShip.UI
         {
             Application.Current.Shutdown();
         }
-
-
-        #region Settings
-        private void checkBoxSound_Click(object sender, RoutedEventArgs e)
-        {
-            GameSettings.GetInstance().GameplaySounds = checkBoxSound.IsChecked.Value;
-        }
-
-        private void checkBoxMusic_Click(object sender, RoutedEventArgs e)
-        {
-            GameSettings.GetInstance().BackgroundMusic = checkBoxMusic.IsChecked.Value;
-        }
-        #endregion
     }
 }
