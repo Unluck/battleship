@@ -191,10 +191,8 @@ namespace BattleShip.UI
                                 DisplayShip(canvasPlayerOne, location.x, location.y);
                     }
                 }
-
                 return;
             }
-
             else
             {
                 labelHint.Content = "Player 1 missed. Turn comes to Player 2.";

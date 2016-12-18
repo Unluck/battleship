@@ -122,7 +122,7 @@ namespace BattleShip.UI
                 UpdateLabelShips();
                 if (repo.EnemyShips.Count == 0)
                 {
-                    int score = 30 * repo.Ships.Count;
+                    int score = 10000 * repo.Ships.Count;
                     string name = GameSettings.GetInstance().UserName;
                     string result = string.Format("{0} {1}\n", score.ToString(), name);
                     lb.UpLoadBoard(result);
@@ -162,10 +162,7 @@ namespace BattleShip.UI
 
             if (repo.Ships.Count == 0)
             {
-                int score = 30 * repo.EnemyShips.Count;
-                string name = GameSettings.GetInstance().UserName;
-                string result = string.Format("{0} {1}\n", score.ToString(), name);
-                lb.UpLoadBoard(result);
+ 
                 var dialogResult = gameLose.ShowDialog();
 
                 if (dialogResult == false)
