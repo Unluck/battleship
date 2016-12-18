@@ -72,7 +72,7 @@
     <Resource Include="Images\GameLostBG.jpg" />
     <Resource Include="Images\GameWonBG.jpg" />
     <Content Include="LeaderBoard\leaderboard.txt" />
-    <Content Include="Sounds\background.mp3" />
+    <EmbeddedResource Include="Sounds\background.mp3" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

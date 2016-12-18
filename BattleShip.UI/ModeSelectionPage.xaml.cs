@@ -23,11 +23,7 @@ namespace BattleShip.UI
             NavigationService.Navigate(shipPlacementPage);
         }
 
-        private void buttonTwoPlayers_Click(object sender, RoutedEventArgs e)
-        {
-            TwoPlayersShipPlacementPage twoPlayersShipPlacementPage = new TwoPlayersShipPlacementPage(1);
-            NavigationService.Navigate(twoPlayersShipPlacementPage);
-        }
+ 
 
         private void buttonBack_Click(object sender, RoutedEventArgs e)
         {

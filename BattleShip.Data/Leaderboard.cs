@@ -9,15 +9,15 @@ namespace BattleShip.Data
 {
     public class LeaderBoard
     {
-        public void DownLoadBoard()
+        public string[] DownLoadBoard()
         {
             string[] lines = File.ReadAllLines("../../../BattleShip.Data/LeaderBoard/leaderboard.txt", Encoding.UTF8);
+            return lines;
         }
         
         public void UpLoadBoard(string str)
         {
             File.AppendAllText("../../../BattleShip.Data/LeaderBoard/leaderboard.txt", str, Encoding.UTF8);
         }
-
     }
 }
