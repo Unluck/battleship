@@ -21,6 +21,7 @@ namespace BattleShip.UI
         List<Ship> ranShip = new List<Ship>();
         ComputerLogic cl = new ComputerLogic();
         int[,] shots = new int[10, 10];
+        bool gameOver = new bool();
 
         private void DisplayShip(Canvas canvas, int x, int y)
         {
@@ -96,6 +97,9 @@ namespace BattleShip.UI
 
         private void canvasEnemyField_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            if (gameOver == true)
+                return;
+
             Point position = e.GetPosition(canvasEnemyField);
             int x = (int)(position.X / (canvasEnemyField.ActualWidth / 10));
             int y = (int)(position.Y / (canvasEnemyField.ActualHeight / 10));
@@ -162,10 +166,29 @@ namespace BattleShip.UI
                     NavigationService.Navigate(startingPage);
 
                 if (dialogResult == true)
+                {
+                    gameOver = true;
+                    buttonMainMenu.Visibility = Visibility.Visible;
+                    buttonQuit.Visibility = Visibility.Visible;
+
                     foreach (var ship in repo.EnemyShips)
                         foreach (var location in ship.ShipLoc)
                             DisplayShip(canvasEnemyField, location.x, location.y);
+                }
             }
+        }
+
+        private void buttonMainMenu_Click(object sender, RoutedEventArgs e)
+        {
+            ShipPlacement shipPlacement = new ShipPlacement();
+            shipPlacement.Clear();
+            Repository.GetInstance().EnemyShips.Clear();
+            NavigationService.Navigate(startingPage);
+        }
+
+        private void buttonQuit_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
 
         public void UpdateLabelShips()

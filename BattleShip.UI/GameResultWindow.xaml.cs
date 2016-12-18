@@ -1,4 +1,5 @@
-﻿using BattleShip.Logic;
+﻿using BattleShip.Data;
+using BattleShip.Logic;
 using System;
 using System.Windows;
 using System.Windows.Media;
@@ -38,6 +39,7 @@ namespace BattleShip.UI
         private void buttonMainMenu_Click(object sender, RoutedEventArgs e)
         {
             shipPlacement.Clear();
+            Repository.GetInstance().EnemyShips.Clear();
             DialogResult = false;
             Close();
         }

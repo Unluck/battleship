@@ -40,5 +40,11 @@ namespace BattleShip.UI
             GameSettings.GetInstance().BackgroundMusic = checkBoxMusic.IsChecked.Value;
         }
         #endregion
+
+        private void buttonTwoPlayers_Click(object sender, RoutedEventArgs e)
+        {
+            ShipPlacementPage shipPlacePage = new ShipPlacementPage();
+            NavigationService.Navigate(shipPlacePage);
+        }
     }
 }
