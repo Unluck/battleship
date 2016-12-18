@@ -12,13 +12,11 @@
         <Grid.Background>
             <ImageBrush ImageSource="/BattleShip.Data;component/Images/PlayingBG.jpg"/>
         </Grid.Background>
-        <Button x:Name="buttonBack" Content="BACK" Margin="10,12,0,0" VerticalAlignment="Top" Width="99" Height="33" FontSize="16" FontFamily="Verdana" FontWeight="Bold" Foreground="White" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Click="buttonBack_Click">
+        <Button x:Name="buttonBack" Content="BACK" Margin="10,10,0,0" VerticalAlignment="Top" Width="99" Height="33" FontSize="16" FontFamily="Verdana" FontWeight="Bold" Foreground="White" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Click="buttonBack_Click">
             <Button.Background>
                 <ImageBrush ImageSource="/BattleShip.Data;component/Images/ButtonBG.png"/>
             </Button.Background>
         </Button>
-        <CheckBox x:Name="checkBoxMusic" Content="Background Music" HorizontalAlignment="Left" Margin="820,30,0,0" VerticalAlignment="Top" FontWeight="Bold" Click="checkBoxMusic_Click"/>
-        <CheckBox x:Name="checkBoxSound" Content="Gameplay Sounds" HorizontalAlignment="Left" Margin="820,10,0,0" VerticalAlignment="Top" FontWeight="Bold" Click="checkBoxSound_Click"/>
         <Label x:Name="lb1"  HorizontalAlignment="Left" Margin="380,155,0,0" VerticalAlignment="Top" FontFamily="Verdana" FontSize="24" FontWeight="Bold" Background="{x:Null}" Foreground="#FFF9F9F9"/>
         <Label x:Name="lb2"  HorizontalAlignment="Left" Margin="380,222,0,0" VerticalAlignment="Top" FontFamily="Verdana" FontSize="24" FontWeight="Bold" Background="{x:Null}" Foreground="#FFF9F9F9"/>
         <Label x:Name="lb3"  HorizontalAlignment="Left" Margin="380,287,0,0" VerticalAlignment="Top" FontFamily="Verdana" FontSize="24" FontWeight="Bold" Background="{x:Null}" Foreground="#FFF9F9F9"/>

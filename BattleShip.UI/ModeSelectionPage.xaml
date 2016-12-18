@@ -17,7 +17,7 @@
                 <ImageBrush ImageSource="/BattleShip.Data;component/Images/ButtonBG.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="buttonTwoPlayers" Content="2 PLAYERS" Margin="305,300,0,0" VerticalAlignment="Top" Width="350" Height="100" FontSize="36" FontFamily="Verdana" FontWeight="Bold" Foreground="White" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}" HorizontalAlignment="Left">
+        <Button x:Name="buttonTwoPlayers" Content="2 PLAYERS" Margin="305,300,0,0" VerticalAlignment="Top" Width="350" Height="100" FontSize="36" FontFamily="Verdana" FontWeight="Bold" Foreground="White" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Click="buttonTwoPlayers_Click">
             <Button.Background>
                 <ImageBrush ImageSource="/BattleShip.Data;component/Images/ButtonBG.png"/>
             </Button.Background>
