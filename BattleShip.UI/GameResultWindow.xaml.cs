@@ -14,7 +14,7 @@ namespace BattleShip.UI
     {
         ShipPlacement shipPlacement = new ShipPlacement();
 
-        public GameResultWindow(bool win)
+        public GameResultWindow(bool win, int player)
         {
             InitializeComponent();
 
@@ -24,6 +24,13 @@ namespace BattleShip.UI
                 labelresult.Content = "YOU WON!";
                 labelresult.Margin = new Thickness(215, 50, 0, 0);
                 labelresult.Foreground = Brushes.LimeGreen;
+
+                if(player != 0)
+                {
+                    labelresult.Content = string.Format("PLAYER {0} WON!", player);
+                    labelresult.Margin = new Thickness(153.5, 50, 0, 0);
+                    buttonShowShips.Visibility = Visibility.Visible;
+                }
             }
             
             else
@@ -38,8 +45,7 @@ namespace BattleShip.UI
 
         private void buttonMainMenu_Click(object sender, RoutedEventArgs e)
         {
-            shipPlacement.Clear();
-            Repository.GetInstance().EnemyShips.Clear();
+            shipPlacement.Clear(0);
             DialogResult = false;
             Close();
         }

@@ -15,8 +15,8 @@ namespace BattleShip.UI
     public partial class OnePlayerPage : Page
     {
         StartingPage startingPage = new StartingPage();
-        GameResultWindow gameWin = new GameResultWindow(true);
-        GameResultWindow gameLose = new GameResultWindow(false);
+        GameResultWindow gameWin = new GameResultWindow(true, 0);
+        GameResultWindow gameLose = new GameResultWindow(false, 0);
         Repository repo = Repository.GetInstance();
         List<Ship> ranShip = new List<Ship>();
         ComputerLogic cl = new ComputerLogic();
@@ -83,8 +83,6 @@ namespace BattleShip.UI
         public OnePlayerPage()
         {
             InitializeComponent();
-            checkBoxMusic.IsChecked = GameSettings.GetInstance().BackgroundMusic;
-            checkBoxSound.IsChecked = GameSettings.GetInstance().GameplaySounds;
             cl.RandomPlaceShip(repo.EnemyShips);
             UpdateLabelShips();
 
@@ -189,8 +187,7 @@ namespace BattleShip.UI
         private void buttonMainMenu_Click(object sender, RoutedEventArgs e)
         {
             ShipPlacement shipPlacement = new ShipPlacement();
-            shipPlacement.Clear();
-            Repository.GetInstance().EnemyShips.Clear();
+            shipPlacement.Clear(0);
             NavigationService.Navigate(startingPage);
         }
 
@@ -209,17 +206,5 @@ namespace BattleShip.UI
             labelShips.Content = string.Format("Enemy ships:\n4 cells: {0}\n3 cells: {1}\n2 cells: {2}\n1 cell: {3}",
                 repo.Cells[3], repo.Cells[2], repo.Cells[1], repo.Cells[0]);
         }
-
-        #region Settings
-        private void checkBoxSound_Click(object sender, RoutedEventArgs e)
-        {
-            GameSettings.GetInstance().GameplaySounds = checkBoxSound.IsChecked.Value;
-        }
-
-        private void checkBoxMusic_Click(object sender, RoutedEventArgs e)
-        {
-            GameSettings.GetInstance().BackgroundMusic = checkBoxMusic.IsChecked.Value;
-        }
-        #endregion
     }
 }

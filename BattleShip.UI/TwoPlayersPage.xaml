@@ -1,0 +1,37 @@
+﻿<Page x:Class="BattleShip.UI.TwoPlayersPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BattleShip.UI"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+      Title="BattleShip" Height="540" Width="960">
+
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/BattleShip.Data;component/Images/PlayingBG.jpg"/>
+        </Grid.Background>
+        <Canvas x:Name="canvasPlayerOne" HorizontalAlignment="Left" Height="300" Margin="120,125,0,0" VerticalAlignment="Top" Width="300" MouseLeftButtonDown="canvasPlayerOne_MouseLeftButtonDown">
+            <Canvas.Background>
+                <ImageBrush ImageSource="/BattleShip.Data;component/Images/FieldBG.png"/>
+            </Canvas.Background>
+        </Canvas>
+        <Canvas x:Name="canvasPlayerTwo" HorizontalAlignment="Left" Height="300" Margin="520,125,0,0" VerticalAlignment="Top" Width="300" MouseLeftButtonDown="canvasPlayerTwo_MouseLeftButtonDown">
+            <Canvas.Background>
+                <ImageBrush ImageSource="/BattleShip.Data;component/Images/FieldBG.png"/>
+            </Canvas.Background>
+        </Canvas>
+        <Button x:Name="buttonMainMenu" Content="MAIN MENU" HorizontalAlignment="Left" Margin="635,442,0,0" VerticalAlignment="Top" Width="150" Height="50" FontFamily="Verdana" FontSize="20" FontWeight="Bold" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}" Foreground="White" Click="buttonMainMenu_Click" Visibility="Hidden">
+            <Button.Background>
+                <ImageBrush ImageSource="/BattleShip.Data;component/Images/ButtonBG.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="buttonQuit" Content="QUIT GAME" HorizontalAlignment="Left" Margin="790,442,0,0" VerticalAlignment="Top" Width="150" Height="50" BorderBrush="{x:Null}" FontFamily="Verdana" FontSize="20" FontWeight="Bold" Template="{DynamicResource ButtonControlTemplate1}" Foreground="White" Click="buttonQuit_Click" Visibility="Hidden">
+            <Button.Background>
+                <ImageBrush ImageSource="/BattleShip.Data;component/Images/ButtonBG.png"/>
+            </Button.Background>
+        </Button>
+        <Label x:Name="labelHint" Content="" HorizontalAlignment="Left" Margin="120,30,0,0" VerticalAlignment="Top" FontSize="20"/>
+    </Grid>
+</Page>

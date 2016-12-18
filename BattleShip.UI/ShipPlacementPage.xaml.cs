@@ -16,13 +16,11 @@ namespace BattleShip.UI
     {
         ShipPlacement shipPlacement = new ShipPlacement();
         Repository repo = Repository.GetInstance();
-        ComputerLogic cl = new ComputerLogic();
+        ComputerLogic computerLogic = new ComputerLogic();
 
         public ShipPlacementPage()
         {
             InitializeComponent();
-            checkBoxMusic.IsChecked = GameSettings.GetInstance().BackgroundMusic;
-            checkBoxSound.IsChecked = GameSettings.GetInstance().GameplaySounds;
             textBoxUserName.Text = GameSettings.GetInstance().UserName;
             labelHint.Content = repo.LabelContent[0];
             UpdateLabelShips();
@@ -35,7 +33,7 @@ namespace BattleShip.UI
             int y = (int)(position.Y / (canvasField.ActualHeight / 10));
             Location p = new Location(x, y);
 
-            int result = shipPlacement.CheckPosition(x, y);
+            int result = shipPlacement.CheckPosition(0, x, y);
             if (result != 5)
             {
                 labelHint.Content = repo.LabelContent[result];
@@ -52,7 +50,7 @@ namespace BattleShip.UI
         private void buttonPlace_Click(object sender, RoutedEventArgs e)
         {
             var count = repo.ClicksExtended.Count;
-            var result = shipPlacement.PlaceShip();
+            var result = shipPlacement.PlaceShip(0);
             if (result != 8)
             {
                 labelHint.Content = repo.LabelContent[result];
@@ -87,7 +85,7 @@ namespace BattleShip.UI
 
         private void buttonClear_Click(object sender, RoutedEventArgs e)
         {
-            shipPlacement.Clear();
+            shipPlacement.Clear(0);
             canvasField.Children.Clear();
             labelHint.Content = repo.LabelContent[10];
             UpdateLabelShips();
@@ -95,6 +93,7 @@ namespace BattleShip.UI
 
         private void buttonBack_Click(object sender, RoutedEventArgs e)
         {
+            shipPlacement.Clear(0);
             ModeSelectionPage modeSelectionPage = new ModeSelectionPage();
             NavigationService.Navigate(modeSelectionPage);
         }
@@ -106,7 +105,8 @@ namespace BattleShip.UI
                 labelHint.Content = repo.LabelContent[11];
                 return;
             }
-            cl.RandomPlaceShip(repo.Ships);
+
+            computerLogic.RandomPlaceShip(repo.Ships);
             foreach (var ship in repo.Ships)
                 foreach (var location in ship.ShipLoc)
                     DrawShip(location.x, location.y);
@@ -135,17 +135,5 @@ namespace BattleShip.UI
             labelShips.Content = string.Format("4 cells: {0}\n3 cells: {1}\n2 cells: {2}\n1 cell: {3}", 
                 repo.Cells[3], repo.Cells[2], repo.Cells[1], repo.Cells[0]);
         }
-
-        #region Settings
-        private void checkBoxSound_Click(object sender, RoutedEventArgs e)
-        {
-            GameSettings.GetInstance().GameplaySounds = checkBoxSound.IsChecked.Value;
-        }
-
-        private void checkBoxMusic_Click(object sender, RoutedEventArgs e)
-        {
-            GameSettings.GetInstance().BackgroundMusic = checkBoxMusic.IsChecked.Value;
-        }
-        #endregion
     }
 }

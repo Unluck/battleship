@@ -76,6 +76,12 @@
     <Compile Include="StartingPage.xaml.cs">
       <DependentUpon>StartingPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TwoPlayersPage.xaml.cs">
+      <DependentUpon>TwoPlayersPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TwoPlayersShipPlacementPage.xaml.cs">
+      <DependentUpon>TwoPlayersShipPlacementPage.xaml</DependentUpon>
+    </Compile>
     <Page Include="GameResultWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -105,6 +111,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="StartingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TwoPlayersPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TwoPlayersShipPlacementPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

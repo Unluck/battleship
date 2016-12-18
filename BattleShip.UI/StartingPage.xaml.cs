@@ -13,9 +13,6 @@ namespace BattleShip.UI
         public StartingPage()
         {
             InitializeComponent();
-            checkBoxMusic.IsChecked = GameSettings.GetInstance().BackgroundMusic;
-            checkBoxSound.IsChecked = GameSettings.GetInstance().GameplaySounds;
-            //MusicSettings.BackgroundMusic();
         }
 
         private void buttonPlay_Click(object sender, RoutedEventArgs e)
@@ -29,17 +26,5 @@ namespace BattleShip.UI
             LeaderboardPage leaderboardPage = new LeaderboardPage();
             NavigationService.Navigate(leaderboardPage);
         }
-
-        #region Settings
-        private void checkBoxSound_Click(object sender, RoutedEventArgs e)
-        {
-            GameSettings.GetInstance().GameplaySounds = checkBoxSound.IsChecked.Value;
-        }
-
-        private void checkBoxMusic_Click(object sender, RoutedEventArgs e)
-        {
-            GameSettings.GetInstance().BackgroundMusic = checkBoxMusic.IsChecked.Value;
-        }
-        #endregion
     }
 }
