@@ -15,8 +15,8 @@ namespace BattleShip.UI
     public partial class OnePlayerPage : Page
     {
         StartingPage startingPage = new StartingPage();
-        GameResultWindow gameWin = new GameResultWindow(true);
-        GameResultWindow gameLose = new GameResultWindow(false);
+        GameResultWindow gameWin = new GameResultWindow(true, 0);
+        GameResultWindow gameLose = new GameResultWindow(false, 0);
         Repository repo = Repository.GetInstance();
         List<Ship> ranShip = new List<Ship>();
         ComputerLogic cl = new ComputerLogic();
@@ -180,8 +180,7 @@ namespace BattleShip.UI
         private void buttonMainMenu_Click(object sender, RoutedEventArgs e)
         {
             ShipPlacement shipPlacement = new ShipPlacement();
-            shipPlacement.Clear();
-            Repository.GetInstance().EnemyShips.Clear();
+            shipPlacement.Clear(0);
             NavigationService.Navigate(startingPage);
         }
 

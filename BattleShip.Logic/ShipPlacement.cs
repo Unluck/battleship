@@ -1,18 +1,20 @@
 ﻿using BattleShip.Data;
+using System.Collections.Generic;
 
 namespace BattleShip.Logic
 {
     public class ShipPlacement
     {
         Repository repo = Repository.GetInstance();
+        List<Ship>[] ships = new List<Ship>[2] { Repository.GetInstance().Ships, Repository.GetInstance().EnemyShips };
 
-        public int CheckPosition(int x, int y)
+        public int CheckPosition(int player, int x, int y)
         {
             if (StartGame() == true)
                 return 13;
 
-            if (repo.Ships.Count != 0)
-                foreach (var ship in repo.Ships)
+            if (ships[player].Count != 0)
+                foreach (var ship in ships[player])
                     foreach (var location in ship.ShipLoc)
                         if (location.x == x && location.y == y)                          
                             return 1;
@@ -42,7 +44,7 @@ namespace BattleShip.Logic
             return 5;
         }
 
-        public int PlaceShip()
+        public int PlaceShip(int player)
         {
             var location = new Location[repo.Clicks.Count];
 
@@ -65,7 +67,7 @@ namespace BattleShip.Logic
                 ShipPlaced(location[i]);
             }
 
-            repo.Ships.Add(new Ship(repo.Clicks.Count, 0, location));
+            ships[player].Add(new Ship(repo.Clicks.Count, 0, location));
             repo.Cells[repo.Clicks.Count - 1] -= 1;
             repo.Clicks.Clear();
 
@@ -122,7 +124,7 @@ namespace BattleShip.Logic
             repo.Field[x + 1, y + 1] = 4;
         }
 
-        public void Clear()
+        public void Clear(int player)
         {
             for (int i = 0; i < 12; i++)
                 for (int j = 0; j < 12; j++)
@@ -132,7 +134,12 @@ namespace BattleShip.Logic
 
             repo.Clicks.Clear();
             repo.ClicksExtended.Clear();
-            repo.Ships.Clear();
+
+            if (player == 0)
+                repo.Ships.Clear();
+            
+            if (player == 0 || player == 1)
+                repo.EnemyShips.Clear();
         }
     }
 }
