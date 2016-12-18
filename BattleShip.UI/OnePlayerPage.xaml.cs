@@ -20,6 +20,7 @@ namespace BattleShip.UI
         Repository repo = Repository.GetInstance();
         List<Ship> ranShip = new List<Ship>();
         ComputerLogic cl = new ComputerLogic();
+        LeaderBoard lb = new LeaderBoard();
         int[,] shots = new int[10, 10];
         bool gameOver = new bool();
 
@@ -121,15 +122,6 @@ namespace BattleShip.UI
             {
                 DisplayShot(canvasEnemyField, x, y);
                 UpdateLabelShips();
-
-                if (repo.EnemyShips.Count == 0)
-                {
-                    var dialogResult = gameWin.ShowDialog();
-
-                    if (dialogResult == false)
-                        NavigationService.Navigate(startingPage);
-                }
-
                 return;
             }
 
@@ -157,8 +149,26 @@ namespace BattleShip.UI
                 }
             }
 
+            if (repo.EnemyShips.Count == 0)
+            {
+                int score = 30 * repo.Ships.Count;
+                string name = GameSettings.GetInstance().UserName;
+                string result = string.Format("{0} {1}\n", score.ToString(), name);
+                lb.UpLoadBoard(result);
+                var dialogResult = gameWin.ShowDialog();
+
+                if (dialogResult == false)
+                    NavigationService.Navigate(startingPage);
+
+                return;
+            }
+
             if (repo.Ships.Count == 0)
             {
+                int score = 30 * repo.EnemyShips.Count;
+                string name = GameSettings.GetInstance().UserName;
+                string result = string.Format( "{0} {1}\n", score.ToString(), name );
+                lb.UpLoadBoard(result);
                 var dialogResult = gameLose.ShowDialog();
 
                 if (dialogResult == false)
