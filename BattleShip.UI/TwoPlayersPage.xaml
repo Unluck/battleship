@@ -12,12 +12,12 @@
         <Grid.Background>
             <ImageBrush ImageSource="/BattleShip.Data;component/Images/PlayingBG.jpg"/>
         </Grid.Background>
-        <Canvas x:Name="canvasPlayerOne" HorizontalAlignment="Left" Height="300" Margin="120,125,0,0" VerticalAlignment="Top" Width="300" MouseLeftButtonDown="canvasPlayerOne_MouseLeftButtonDown">
+        <Canvas x:Name="canvasPlayerOne" HorizontalAlignment="Left" Height="300" Margin="130,125,0,0" VerticalAlignment="Top" Width="300" MouseLeftButtonDown="canvasPlayerOne_MouseLeftButtonDown">
             <Canvas.Background>
                 <ImageBrush ImageSource="/BattleShip.Data;component/Images/FieldBG.png"/>
             </Canvas.Background>
         </Canvas>
-        <Canvas x:Name="canvasPlayerTwo" HorizontalAlignment="Left" Height="300" Margin="520,125,0,0" VerticalAlignment="Top" Width="300" MouseLeftButtonDown="canvasPlayerTwo_MouseLeftButtonDown">
+        <Canvas x:Name="canvasPlayerTwo" HorizontalAlignment="Left" Height="300" Margin="510,125,0,0" VerticalAlignment="Top" Width="300" MouseLeftButtonDown="canvasPlayerTwo_MouseLeftButtonDown">
             <Canvas.Background>
                 <ImageBrush ImageSource="/BattleShip.Data;component/Images/FieldBG.png"/>
             </Canvas.Background>
@@ -32,6 +32,8 @@
                 <ImageBrush ImageSource="/BattleShip.Data;component/Images/ButtonBG.png"/>
             </Button.Background>
         </Button>
-        <Label x:Name="labelHint" Content="" HorizontalAlignment="Left" Margin="120,30,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <Label x:Name="labelHint" Content="" HorizontalAlignment="Left" Margin="120,47,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <Label x:Name="labelShipsOne" Content="Ships:" HorizontalAlignment="Left" Margin="10,125,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Background="{DynamicResource {x:Static SystemColors.InactiveCaptionBrushKey}}"/>
+        <Label x:Name="labelShipsTwo" Content="Ships:" HorizontalAlignment="Left" Margin="828,125,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Background="{DynamicResource {x:Static SystemColors.InactiveCaptionBrushKey}}"/>
     </Grid>
 </Page>

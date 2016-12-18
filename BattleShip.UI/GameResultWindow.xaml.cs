@@ -28,7 +28,7 @@ namespace BattleShip.UI
                 {
                     labelresult.Content = string.Format("PLAYER {0} WON!", player);
                     labelresult.Margin = new Thickness(153.5, 50, 0, 0);
-                    buttonShowShips.Visibility = Visibility.Visible;
+                    buttonShowRemainingShips.Visibility = Visibility.Visible;
                 }
             }
 
@@ -38,7 +38,7 @@ namespace BattleShip.UI
                 labelresult.Content = "YOU LOST!";
                 labelresult.Margin = new Thickness(214, 50, 0, 0);
                 labelresult.Foreground = Brushes.Red;
-                buttonShowShips.Visibility = Visibility.Visible;
+                buttonShowEnemyShips.Visibility = Visibility.Visible;
             }
         }
 
