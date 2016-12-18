@@ -6,27 +6,13 @@ using System.Windows.Navigation;
 namespace BattleShip.UI
 {
     /// <summary>
-    /// Логика взаимодействия для ModeSelectionPage.xaml
+    /// Логика взаимодействия для LeaderboardPage.xaml
     /// </summary>
-    public partial class ModeSelectionPage : Page
+    public partial class LeaderboardPage : Page
     {
-        public ModeSelectionPage()
+        public LeaderboardPage()
         {
             InitializeComponent();
-            checkBoxMusic.IsChecked = GameSettings.GetInstance().BackgroundMusic;
-            checkBoxSound.IsChecked = GameSettings.GetInstance().GameplaySounds;
-        }
-
-        private void buttonOnePlayer_Click(object sender, RoutedEventArgs e)
-        {
-            ShipPlacementPage shipPlacementPage = new ShipPlacementPage();
-            NavigationService.Navigate(shipPlacementPage);
-        }
-
-        private void buttonTwoPlayers_Click(object sender, RoutedEventArgs e)
-        {
-            TwoPlayersShipPlacementPage twoPlayersShipPlacementPage = new TwoPlayersShipPlacementPage(1);
-            NavigationService.Navigate(twoPlayersShipPlacementPage);
         }
 
         private void buttonBack_Click(object sender, RoutedEventArgs e)
