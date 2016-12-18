@@ -24,11 +24,15 @@ namespace BattleShip.UI
         bool player = new bool();
         int[,] shotsOne = new int[10, 10];
         int[,] shotsTwo = new int[10, 10];
+        int[] cellsOne = new int[4] { 0, 0, 0, 0 };
+        int[] cellsTwo = new int[4] { 0, 0, 0, 0 };
 
         public TwoPlayersPage()
         {
             InitializeComponent();
             labelHint.Content = "Player 1 turn to shoot. Click on enemy field";
+            UpdateLabelShips(labelShipsOne);
+            UpdateLabelShips(labelShipsTwo);
         }
 
         private void DisplayShip(Canvas canvas, int x, int y)
@@ -114,6 +118,7 @@ namespace BattleShip.UI
             {
                 labelHint.Content = "Kill! Shoot again.";
                 DisplayShot(canvasPlayerOne, x, y);
+                UpdateLabelShips(labelShipsOne);
 
                 if (ships[0].Count == 0)
                 {
@@ -172,6 +177,7 @@ namespace BattleShip.UI
             {
                 labelHint.Content = "Kill! Shoot again.";
                 DisplayShot(canvasPlayerTwo, x, y);
+                UpdateLabelShips(labelShipsTwo);
 
                 if (ships[1].Count == 0)
                 {
@@ -213,6 +219,31 @@ namespace BattleShip.UI
         private void buttonQuit_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        public void UpdateLabelShips(Label labelShips)
+        {
+            if (labelShips == labelShipsOne)
+            {
+                cellsOne = new int[4] { 0, 0, 0, 0 };
+
+                foreach (var ship in ships[0])
+                    cellsOne[ship.Lifes - 1]++;
+
+                labelShips.Content = string.Format("Ships left:\n4 cells: {0}\n3 cells: {1}\n2 cells: {2}\n1 cell: {3}",
+                    cellsOne[3], cellsOne[2], cellsOne[1], cellsOne[0]);
+            }
+
+            else
+            {
+                cellsTwo = new int[4] { 0, 0, 0, 0 };
+
+                foreach (var ship in ships[1])
+                    cellsTwo[ship.Lifes - 1]++;
+
+                labelShips.Content = string.Format("Ships left:\n4 cells: {0}\n3 cells: {1}\n2 cells: {2}\n1 cell: {3}",
+                    cellsTwo[3], cellsTwo[2], cellsTwo[1], cellsTwo[0]);
+            }
         }
     }
 }

@@ -24,6 +24,7 @@ namespace BattleShip.UI
         public TwoPlayersShipPlacementPage(int playercount)
         {
             InitializeComponent();
+            UpdateLabelShips();
 
             if (playercount == 1)
             {
