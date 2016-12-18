@@ -26,6 +26,8 @@ namespace BattleShip.UI
 
         private void buttonLeaderboard_Click(object sender, RoutedEventArgs e)
         {
+            LeaderboardPage leaderboardPage = new LeaderboardPage();
+            NavigationService.Navigate(leaderboardPage);
         }
 
         #region Settings
