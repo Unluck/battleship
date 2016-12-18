@@ -19,7 +19,12 @@
                 <ImageBrush ImageSource="/BattleShip.Data;component/Images/ButtonBG.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="buttonShowShips" Content="SHOW ENEMY&#xA;      SHIPS" HorizontalAlignment="Left" Margin="238,249,0,0" VerticalAlignment="Top" Width="150" Height="50" BorderBrush="{x:Null}" FontFamily="Verdana" FontWeight="Bold" Template="{DynamicResource ButtonControlTemplate1}" Foreground="White" FontSize="16" Visibility="Hidden" Click="buttonShowShips_Click">
+        <Button x:Name="buttonShowEnemyShips" Content="SHOW ENEMY&#xA;      SHIPS" HorizontalAlignment="Left" Margin="238,249,0,0" VerticalAlignment="Top" Width="150" Height="50" BorderBrush="{x:Null}" FontFamily="Verdana" FontWeight="Bold" Template="{DynamicResource ButtonControlTemplate1}" Foreground="White" FontSize="16" Click="buttonShowShips_Click" Visibility="Hidden">
+            <Button.Background>
+                <ImageBrush ImageSource="/BattleShip.Data;component/Images/ButtonBG.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="buttonShowRemainingShips" Content="SHOW REMAINING&#xA;           SHIPS" HorizontalAlignment="Left" Margin="238,249,0,0" VerticalAlignment="Top" Width="150" Height="50" BorderBrush="{x:Null}" FontFamily="Verdana" FontWeight="Bold" Template="{DynamicResource ButtonControlTemplate1}" Foreground="White" Click="buttonShowShips_Click" Visibility="Hidden">
             <Button.Background>
                 <ImageBrush ImageSource="/BattleShip.Data;component/Images/ButtonBG.png"/>
             </Button.Background>
