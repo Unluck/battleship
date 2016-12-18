@@ -259,7 +259,11 @@ namespace BattleShip.Logic
             {
                 massShips[x, y] = 3;
                 ShowUnplayableDots(new Location[] { new Location(x, y) }, massShips);
-                goto restart;
+                if (repo.Ships.Count != 0)
+                {
+                    goto restart;
+                }
+                else { return massShips; }
             }
             if (statusFirst==Events.shotStatus.hit)
             {
@@ -281,7 +285,11 @@ namespace BattleShip.Logic
                         new Location(statusSecond.Item2.x, statusSecond.Item2.y)
                     };
                     ShowUnplayableDots(massLoc, massShips);
-                    goto restart;
+                    if (repo.Ships.Count != 0)
+                    {
+                        goto restart;
+                    }
+                    else { return massShips; }
                 }
                 if(statusSecond.Item1==Events.shotStatus.hit)
                 {
@@ -303,7 +311,11 @@ namespace BattleShip.Logic
                             new Location(statusThird.Item2.x, statusThird.Item2.y)
                          };
                         ShowUnplayableDots(massLoc, massShips);
-                        goto restart;
+                        if (repo.Ships.Count != 0)
+                        {
+                            goto restart;
+                        }
+                        else { return massShips; }
                     }
                     if(statusThird.Item1==Events.shotStatus.hit)
                     {
@@ -326,7 +338,11 @@ namespace BattleShip.Logic
                                  new Location(statusFourth.Item2.x, statusFourth.Item2.y)
                              };
                             ShowUnplayableDots(massLoc, massShips);
-                            goto restart;
+                            if (repo.Ships.Count != 0)
+                            {
+                                goto restart;
+                            }
+                            else { return massShips; }
                         }
                     }
                 }
@@ -521,7 +537,11 @@ namespace BattleShip.Logic
                         new Location(status.Item2.x, status.Item2.y)
                     };
                     ShowUnplayableDots(massLoc, massShips);
-                    return ComputerActionFirstShot();
+                    if (repo.Ships.Count != 0)
+                    {
+                        return ComputerActionFirstShot();
+                    }
+                    else { return massShips; }
                 }
                 if (status.Item1 == Events.shotStatus.hit)
                 {
@@ -542,7 +562,11 @@ namespace BattleShip.Logic
                             new Location(statusSecond.Item2.x, statusSecond.Item2.y)
                          };
                         ShowUnplayableDots(massLoc, massShips);
-                        return ComputerActionFirstShot();
+                        if (repo.Ships.Count != 0)
+                        {
+                            return ComputerActionFirstShot();
+                        }
+                        else { return massShips; }
                     }
                     if (statusSecond.Item1 == Events.shotStatus.hit)
                     {
@@ -564,7 +588,11 @@ namespace BattleShip.Logic
                                  new Location(statusThird.Item2.x, statusThird.Item2.y)
                              };
                             ShowUnplayableDots(massLoc, massShips);
-                            return ComputerActionFirstShot();
+                            if (repo.Ships.Count != 0)
+                            {
+                                return ComputerActionFirstShot();
+                            }
+                            else { return massShips; }
                         }
                     }
                 }
