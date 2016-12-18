@@ -56,7 +56,6 @@ namespace BattleShip.UI
             if (result != 8)
             {
                 labelHint.Content = repo.LabelContent[result];
-
                 if (result == 7)
                 {
                     for (int i = count; i > count - repo.Clicks.Count; i--)
@@ -64,10 +63,8 @@ namespace BattleShip.UI
                         canvasField.Children.RemoveAt(i - 1);
                         repo.ClicksExtended.RemoveAt(i - 1);
                     }
-
                     repo.Clicks.Clear();
                 }
-
                 return;
             }
 
