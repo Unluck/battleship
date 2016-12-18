@@ -10,7 +10,7 @@ namespace BattleShip.Logic
         Events ev = new Events();
         int[,] localShip = new int[10, 10];
         int[,] massShips = new int[10, 10];
-        
+
         public void UserShip()
         {
             foreach (var s in repo.Ships)
@@ -207,29 +207,29 @@ namespace BattleShip.Logic
                 for (int j = 0; j < 10; j++)
                     localShip[i, j] = 0;
         }
-                
-           
+
+
         private void CheckUniqueShip(Location[] massloc)
         {
             foreach (var s in massloc)
             {
-                if (s.x - 1 >= 0 & s.y - 1>=0 & s.x - 1<10 & s.y - 1 <10)
+                if (s.x - 1 >= 0 & s.y - 1 >= 0 & s.x - 1 < 10 & s.y - 1 < 10)
                     localShip[s.x - 1, s.y - 1] = 1;
-                if(s.x>=0 & s.y - 1>=0 & s.x<10 & s.y-1<10)
+                if (s.x >= 0 & s.y - 1 >= 0 & s.x < 10 & s.y - 1 < 10)
                     localShip[s.x, s.y - 1] = 1;
-                if(s.x + 1>=0 & s.y - 1>=0 & s.x+1<10 & s.y-1<10)
+                if (s.x + 1 >= 0 & s.y - 1 >= 0 & s.x + 1 < 10 & s.y - 1 < 10)
                     localShip[s.x + 1, s.y - 1] = 1;
-                if(s.x - 1>=0 & s.y>=0 & s.x-1<10 & s.y<10)
-                    localShip[s.x-1, s.y] = 1;
-                if(s.x>=0 & s.y>=0 & s.x<10 & s.y<10)
+                if (s.x - 1 >= 0 & s.y >= 0 & s.x - 1 < 10 & s.y < 10)
+                    localShip[s.x - 1, s.y] = 1;
+                if (s.x >= 0 & s.y >= 0 & s.x < 10 & s.y < 10)
                     localShip[s.x, s.y] = 1;
-                if(s.x + 1>=0 & s.y>=0 & s.x+1<10 & s.y<10)
+                if (s.x + 1 >= 0 & s.y >= 0 & s.x + 1 < 10 & s.y < 10)
                     localShip[s.x + 1, s.y] = 1;
-                if(s.x - 1>=0 & s.y + 1>=0 & s.x-1 <10 & s.y+1<10)
+                if (s.x - 1 >= 0 & s.y + 1 >= 0 & s.x - 1 < 10 & s.y + 1 < 10)
                     localShip[s.x - 1, s.y + 1] = 1;
-                if(s.x>=0 & s.y + 1>=0 & s.x<10 & s.y+1<10)
+                if (s.x >= 0 & s.y + 1 >= 0 & s.x < 10 & s.y + 1 < 10)
                     localShip[s.x, s.y + 1] = 1;
-                if(s.x + 1>=0 & s.y + 1>=0 & s.x+1<10 & s.y+1<10)
+                if (s.x + 1 >= 0 & s.y + 1 >= 0 & s.x + 1 < 10 & s.y + 1 < 10)
                     localShip[s.x + 1, s.y + 1] = 1;
             }
 
@@ -238,21 +238,21 @@ namespace BattleShip.Logic
         public int[,] ComputerActionFirstShot()
         {
             restart:
-            int shotNumber=0;
+            int shotNumber = 0;
             Random r = new Random();
             int x = r.Next(0, 10);
             int y = r.Next(0, 10);
-            while (massShips[x, y] == 2 | massShips[x,y]==3)
+            while (massShips[x, y] == 2 | massShips[x, y] == 3)
             {
                 x = r.Next(0, 10);
                 y = r.Next(0, 10);
             }
             var location = new Location(x, y);
-            var statusFirst=ev.Shot(location, repo.Ships);
+            var statusFirst = ev.Shot(location, repo.Ships);
             shotNumber++;
-            if(statusFirst==Events.shotStatus.miss)
+            if (statusFirst == Events.shotStatus.miss)
             {
-                massShips[x,y]=2;
+                massShips[x, y] = 2;
                 return massShips;
             }
             if (statusFirst == Events.shotStatus.kill)
@@ -265,18 +265,18 @@ namespace BattleShip.Logic
                 }
                 else { return massShips; }
             }
-            if (statusFirst==Events.shotStatus.hit)
+            if (statusFirst == Events.shotStatus.hit)
             {
                 shotNumber++;
                 massShips[x, y] = 3;
                 int randomPos = r.Next(0, 4);
-                var statusSecond=AutoChecking(ref randomPos, x, y, repo.Ships,shotNumber);
-                if(statusSecond.Item1==Events.shotStatus.miss)
+                var statusSecond = AutoChecking(ref randomPos, x, y, repo.Ships, shotNumber);
+                if (statusSecond.Item1 == Events.shotStatus.miss)
                 {
                     massShips[statusSecond.Item2.x, statusSecond.Item2.y] = 2;
                     return massShips;
                 }
-                if(statusSecond.Item1==Events.shotStatus.kill)
+                if (statusSecond.Item1 == Events.shotStatus.kill)
                 {
                     massShips[statusSecond.Item2.x, statusSecond.Item2.y] = 3;
                     var massLoc = new Location[]
@@ -291,12 +291,12 @@ namespace BattleShip.Logic
                     }
                     else { return massShips; }
                 }
-                if(statusSecond.Item1==Events.shotStatus.hit)
+                if (statusSecond.Item1 == Events.shotStatus.hit)
                 {
                     shotNumber++;
                     massShips[statusSecond.Item2.x, statusSecond.Item2.y] = 3;
-                    var statusThird = AutoChecking(ref randomPos, statusSecond.Item2.x, statusSecond.Item2.y, repo.Ships,shotNumber);
-                    if(statusThird.Item1==Events.shotStatus.miss)
+                    var statusThird = AutoChecking(ref randomPos, statusSecond.Item2.x, statusSecond.Item2.y, repo.Ships, shotNumber);
+                    if (statusThird.Item1 == Events.shotStatus.miss)
                     {
                         massShips[statusThird.Item2.x, statusThird.Item2.y] = 2;
                         return massShips;
@@ -317,7 +317,7 @@ namespace BattleShip.Logic
                         }
                         else { return massShips; }
                     }
-                    if(statusThird.Item1==Events.shotStatus.hit)
+                    if (statusThird.Item1 == Events.shotStatus.hit)
                     {
                         shotNumber++;
                         massShips[statusThird.Item2.x, statusThird.Item2.y] = 3;
@@ -350,17 +350,17 @@ namespace BattleShip.Logic
             return massShips;
         }
 
-        private Tuple<Events.shotStatus,Location> AutoChecking(ref int pos, int x, int y, List<Ship> list,int numShot)
+        private Tuple<Events.shotStatus, Location> AutoChecking(ref int pos, int x, int y, List<Ship> list, int numShot)
         {
             Random r = new Random();
             start:
-            if(pos==0)
+            if (pos == 0)
             {
                 var loc = new Location(x + 1, y);
                 if (loc.x > 9)
                 {
                     pos = 1;
-                    x = x - numShot+2;
+                    x = x - numShot + 2;
                     goto start;
                 }
                 if (massShips[x + 1, y] == 2)
@@ -370,7 +370,7 @@ namespace BattleShip.Logic
                         pos = r.Next(0, 4);
                         goto start;
                     }
-                    if(numShot>2)
+                    if (numShot > 2)
                     {
                         pos = 1;
                         x = x - numShot + 2;
@@ -385,14 +385,14 @@ namespace BattleShip.Logic
                 if (loc.x < 0)
                 {
                     pos = 0;
-                    x = x + numShot-2;
+                    x = x + numShot - 2;
                     goto start;
                 }
                 if (massShips[x - 1, y] == 2)
                 {
                     if (numShot == 2)
                     {
-                        pos = r.Next(0,4);
+                        pos = r.Next(0, 4);
                         goto start;
                     }
                     if (numShot > 2)
@@ -402,15 +402,15 @@ namespace BattleShip.Logic
                         goto start;
                     }
                 }
-                return Tuple.Create(ev.Shot(loc, list), new Location(x-1,y));
+                return Tuple.Create(ev.Shot(loc, list), new Location(x - 1, y));
             }
             if (pos == 2)
             {
-                var loc = new Location(x , y+1);
+                var loc = new Location(x, y + 1);
                 if (loc.y > 9)
                 {
                     pos = 3;
-                    y = y - numShot+2;
+                    y = y - numShot + 2;
                     goto start;
                 }
                 if (massShips[x, y + 1] == 2)
@@ -427,15 +427,15 @@ namespace BattleShip.Logic
                         goto start;
                     }
                 }
-                return Tuple.Create(ev.Shot(loc, list), new Location(x, y+1));
+                return Tuple.Create(ev.Shot(loc, list), new Location(x, y + 1));
             }
             if (pos == 3)
             {
-                var loc = new Location(x , y-1);
+                var loc = new Location(x, y - 1);
                 if (loc.y < 0)
                 {
                     pos = 2;
-                    y = y + numShot-2;
+                    y = y + numShot - 2;
                     goto start;
                 }
                 if (massShips[x, y - 1] == 2)
@@ -452,9 +452,9 @@ namespace BattleShip.Logic
                         goto start;
                     }
                 }
-                return Tuple.Create(ev.Shot(loc, list), new Location(x, y-1));
+                return Tuple.Create(ev.Shot(loc, list), new Location(x, y - 1));
             }
-            return Tuple.Create(Events.shotStatus.miss, new Location(0,0));
+            return Tuple.Create(Events.shotStatus.miss, new Location(0, 0));
         }
 
         private void ShowUnplayableDots(Location[] listLoc, int[,] mass)
@@ -475,7 +475,7 @@ namespace BattleShip.Logic
                     if (mass[s.x - 1, s.y] != 3)
                         mass[s.x - 1, s.y] = 2;
                 if (s.x + 1 >= 0 & s.y >= 0 & s.x + 1 < 10 & s.y < 10)
-                    if (mass[s.x + 1,s.y] != 3)
+                    if (mass[s.x + 1, s.y] != 3)
                         mass[s.x + 1, s.y] = 2;
                 if (s.x - 1 >= 0 & s.y + 1 >= 0 & s.x - 1 < 10 & s.y + 1 < 10)
                     if (mass[s.x - 1, s.y + 1] != 3)
@@ -486,7 +486,7 @@ namespace BattleShip.Logic
                 if (s.x + 1 >= 0 & s.y + 1 >= 0 & s.x + 1 < 10 & s.y + 1 < 10)
                     if (mass[s.x + 1, s.y + 1] != 3)
                         mass[s.x + 1, s.y + 1] = 2;
-            } 
+            }
         }
 
         public int[,] FinishedOffShip(Ship ship)
@@ -494,10 +494,10 @@ namespace BattleShip.Logic
             Random r = new Random();
             int num = ship.Hits;
             int shot = ship.Lifes - num;
-            Location[] loc= new Location[ship.Lifes];
-            if(num>1)
+            Location[] loc = new Location[ship.Lifes];
+            if (num > 1)
             {
-                
+
                 for (int i = 0; i < ship.Lifes; i++)
                 {
                     loc[i] = new Location(ship.ShipLoc[i].x, ship.ShipLoc[i].y);
@@ -512,17 +512,17 @@ namespace BattleShip.Logic
             }
             else
             {
-                Location dot=new Location(0,0);
+                Location dot = new Location(0, 0);
                 int randomPos = r.Next(0, 4);
                 for (int i = 0; i < ship.Lifes; i++)
                 {
-                    if(massShips[ship.ShipLoc[i].x,ship.ShipLoc[i].y]==3)
+                    if (massShips[ship.ShipLoc[i].x, ship.ShipLoc[i].y] == 3)
                     {
                         dot.x = ship.ShipLoc[i].x;
                         dot.y = ship.ShipLoc[i].y;
                     }
                 }
-                var status = AutoChecking(ref randomPos, dot.x, dot.y, repo.Ships , 2);
+                var status = AutoChecking(ref randomPos, dot.x, dot.y, repo.Ships, 2);
                 if (status.Item1 == Events.shotStatus.miss)
                 {
                     massShips[status.Item2.x, status.Item2.y] = 2;

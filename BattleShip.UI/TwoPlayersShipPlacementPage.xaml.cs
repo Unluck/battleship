@@ -1,17 +1,10 @@
 ﻿using BattleShip.Data;
 using BattleShip.Logic;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
@@ -90,6 +83,12 @@ namespace BattleShip.UI
 
         private void buttonReady_Click(object sender, RoutedEventArgs e)
         {
+            if (shipPlacement.StartGame() == false)
+            {
+                labelHint.Content = repo.LabelContent[9];
+                return;
+            }
+
             if (player == 0)
             {
                 shipPlacement.Clear(2);
@@ -97,7 +96,7 @@ namespace BattleShip.UI
                 NavigationService.Navigate(twoPlayersShipPlacementPage);
             }
 
-            if(player == 1)
+            if (player == 1)
             {
                 TwoPlayersPage twoPlayersPage = new TwoPlayersPage();
                 NavigationService.Navigate(twoPlayersPage);

@@ -16,7 +16,7 @@ namespace BattleShip.Logic
             if (ships[player].Count != 0)
                 foreach (var ship in ships[player])
                     foreach (var location in ship.ShipLoc)
-                        if (location.x == x && location.y == y)                          
+                        if (location.x == x && location.y == y)
                             return 1;
 
             foreach (var click in repo.Clicks)
@@ -53,7 +53,7 @@ namespace BattleShip.Logic
 
 
             if (repo.Cells[repo.Clicks.Count - 1] == 0)
-            {         
+            {
                 for (int i = 0; i < 12; i++)
                     for (int j = 0; j < 12; j++)
                         if (repo.Field[i, j] != 4)
@@ -137,7 +137,7 @@ namespace BattleShip.Logic
 
             if (player == 0)
                 repo.Ships.Clear();
-            
+
             if (player == 0 || player == 1)
                 repo.EnemyShips.Clear();
         }

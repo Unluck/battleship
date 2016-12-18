@@ -91,7 +91,7 @@ namespace BattleShip.UI
                     DisplayShip(canvasPlayerField, location.x, location.y);
             cl.UserShip();
 
-           
+
         }
 
         private void canvasEnemyField_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -106,7 +106,7 @@ namespace BattleShip.UI
             Events ev = new Events();
             if (shots[x, y] == 1)
                 return;
-                   
+
             var shotStatus = ev.Shot(p, repo.EnemyShips);
             shots[x, y] = 1;
 
@@ -158,13 +158,13 @@ namespace BattleShip.UI
                 }
             }
 
-            
+
 
             if (repo.Ships.Count == 0)
             {
                 int score = 30 * repo.EnemyShips.Count;
                 string name = GameSettings.GetInstance().UserName;
-                string result = string.Format( "{0} {1}\n", score.ToString(), name );
+                string result = string.Format("{0} {1}\n", score.ToString(), name);
                 lb.UpLoadBoard(result);
                 var dialogResult = gameLose.ShowDialog();
 

@@ -72,7 +72,7 @@ namespace BattleShip.UI
 
         private void buttonStart_Click(object sender, RoutedEventArgs e)
         {
-            if(shipPlacement.StartGame() == false)
+            if (shipPlacement.StartGame() == false)
             {
                 labelHint.Content = repo.LabelContent[9];
                 return;
@@ -100,7 +100,7 @@ namespace BattleShip.UI
 
         private void buttonRandom_Click(object sender, RoutedEventArgs e)
         {
-            if (repo.Ships.Count != 0 || repo.Clicks.Count != 0) 
+            if (repo.Ships.Count != 0 || repo.Clicks.Count != 0)
             {
                 labelHint.Content = repo.LabelContent[11];
                 return;
@@ -132,7 +132,7 @@ namespace BattleShip.UI
 
         public void UpdateLabelShips()
         {
-            labelShips.Content = string.Format("4 cells: {0}\n3 cells: {1}\n2 cells: {2}\n1 cell: {3}", 
+            labelShips.Content = string.Format("4 cells: {0}\n3 cells: {1}\n2 cells: {2}\n1 cell: {3}",
                 repo.Cells[3], repo.Cells[2], repo.Cells[1], repo.Cells[0]);
         }
     }

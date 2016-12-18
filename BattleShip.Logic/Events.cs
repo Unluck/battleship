@@ -18,7 +18,7 @@ namespace BattleShip.Logic
             {
                 foreach (var s2 in s1.ShipLoc)
                 {
-                    if (s2.x == loc.x && s2.y==loc.y)
+                    if (s2.x == loc.x && s2.y == loc.y)
                     {
                         s1.Hits++;
                         if (s1.Hits == s1.Lifes)
@@ -32,6 +32,6 @@ namespace BattleShip.Logic
             }
             return shotStatus.miss;
         }
-         
+
     }
 }
