@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Text;
 
-namespace BattleShip.Data
+namespace BattleShip.Logic
 {
     public class LeaderBoard
     {

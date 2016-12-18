@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="ComputerLogic.cs" />
     <Compile Include="Events.cs" />
+    <Compile Include="LeaderBoard.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShipPlacement.cs" />
   </ItemGroup>
