@@ -121,6 +121,15 @@ namespace BattleShip.UI
             {
                 DisplayShot(canvasEnemyField, x, y);
                 UpdateLabelShips();
+
+                if (repo.EnemyShips.Count == 0)
+                {
+                    var dialogResult = gameWin.ShowDialog();
+
+                    if (dialogResult == false)
+                        NavigationService.Navigate(startingPage);
+                }
+
                 return;
             }
 
@@ -146,16 +155,6 @@ namespace BattleShip.UI
                     if (status[i, j] == 3) DisplayShot(canvasPlayerField, i, j);
                     if (status[i, j] == 2) DisplayMiss(canvasPlayerField, i, j);
                 }
-            }
-
-            if (repo.EnemyShips.Count == 0)
-            {
-                var dialogResult = gameWin.ShowDialog();
-
-                if (dialogResult == false)
-                    NavigationService.Navigate(startingPage);
-
-                return;
             }
 
             if (repo.Ships.Count == 0)
